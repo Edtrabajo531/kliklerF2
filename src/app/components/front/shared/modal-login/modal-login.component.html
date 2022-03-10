@@ -1,0 +1,38 @@
+<form [formGroup]="form" *ngIf="form && showMessage == 1" (ngSubmit)="submit()" autocomplete="off">
+    <div class="modal-header" ngbAutofocus>
+
+        <h5 class="modal-title" id="exampleModalLabel"> <i class="fas fa-sign-in"></i> Iniciar sesión</h5>
+        <button (click)="sendToFather('hideModal')" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+
+        <h6 *ngIf="accountConfirmed" class="text-success text-center mt-3">
+            <i class="fas fa-check"></i> Su cuenta ha sido confirmada con éxito.
+        </h6>
+
+        <div class="mb-2">
+            <label for="">  Alias o correo</label>
+            <input formControlName="alias_or_email" class="form-control" type="text" maxlength="30" />
+            <label *ngIf="validate('alias_or_email').valid " class="text-danger "> {{validate('alias_or_email').error }} </label>
+        </div>
+        <div class="">
+            <label for="">  Contraseña</label>
+            <input formControlName="password" class="form-control" type="text" maxlength="30" />
+            <label *ngIf="validate('password').valid " class="text-danger "> {{validate('password').error }} </label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="d-grid gap-2" style="width: 100%">
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            <button (click)="sendToFather('hideModal')" type="button" class="btn btn-secondary">
+            Cancelar
+        </button>
+        </div>
+        <p class="text-left float-left mt-2" style="display: inline-block;">
+            ¿No tienes cuenta? <a class="link" (click)="sendToFather('showRegister')">Registrate</a>
+        </p>
+    </div>
+</form>
+
+
+<app-resend-mail showMessage="2"></app-resend-mail>

@@ -1,0 +1,50 @@
+<div class="navbar-p fadeIn">
+    <div class="container">
+        <div class="section-1">
+            <div class="content-center">
+                <img class="logo" src="assets\logotipos\klikler-text-logo.png" alt="" />
+            </div>
+        </div>
+        <div class="section-2">
+            <div class="content-center"></div>
+        </div>
+        <div class="section-3">
+            <div class="content-center" *ngIf="userAuth?.id">
+                <div class="dropdown">
+                    <a class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i> {{ userAuth.alias }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item">Perfil</a></li>
+                        <li><a class="dropdown-item">Planes</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="content-center" *ngIf="!userAuth?.id">
+                <a (click)="openLogin()"> <i class="fas fa-sign-in"></i> Inicio</a>
+                <a (click)="openRegister()">
+                    <i class="fas fa-user-plus"></i> Registro</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL LOGIN -->
+<ng-template #modalLogin let-c="close" let-d="dismiss ">
+    <app-modal-login [accountConfirmed]="accountConfirmed" *ngIf="formLogin" (sendToF)="receiveChild($event)"></app-modal-login>
+</ng-template>
+
+<!-- MODAL REGISTER -->
+<ng-template #modalRegister let-c="close" let-d="dismiss ">
+    <app-modal-register *ngIf="formRegister" (sendToF)="receiveChild($event)"></app-modal-register>
+</ng-template>
+
+<!-- MODAL RESEND MAIL -->
+<ng-template #modalResendMail let-c="close" let-d="dismiss ">
+    <app-modal-resend-mail-confirm [errorAccountConfirmed]="errorAccountConfirmed" *ngIf="formResendMail" (sendToF)="receiveChild($event)"></app-modal-resend-mail-confirm>
+</ng-template>
+
+<app-loader *ngIf="loading == true"></app-loader>
+
+<!-- <button (click)="openResendMail()" class="btn">prueba resend</button> -->

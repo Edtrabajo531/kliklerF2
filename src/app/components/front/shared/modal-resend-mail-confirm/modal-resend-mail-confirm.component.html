@@ -1,0 +1,49 @@
+<form [formGroup]="form" *ngIf="form && !showMessage" (ngSubmit)="submit()" autocomplete="off">
+    <div class="modal-header" ngbAutofocus>
+        <h5 class="modal-title text-warning" id="exampleModalLabel">
+            <i class="fas fa-triangle-exclamation"></i> Atencion</h5>
+        <button (click)="sendToFather('hideModal')" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+
+
+        <p *ngIf="errorAccountConfirmed" class="text-warning"> <i class="fas fa-exclamation"></i> El tiempo de confirmación de correo se ha vencido o la petición fue incorrecta.</p>
+
+        <p *ngIf="!errorAccountConfirmed" class="text-warning"> <i class="fas fa-exclamation"></i> Su cuenta no ha sido verificada, para ello deberá confirmar el mensaje enviado a su correo. </p>
+
+        <p>Ingrese su correo para solicitar nuevo mensaje de confirmación.</p>
+        <div class="mb-2">
+            <label for=""> Correo</label>
+            <input formControlName="email" class="form-control" type="text" maxlength="60" />
+            <label *ngIf="validate('email').valid " class="text-danger "> {{validate('email').error }} </label>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <div class="d-grid gap-2" style="width: 100%">
+            <button type="submit" class="btn btn-primary">Reenviar mensaje de confirmación</button>
+            <button (click)="sendToFather('hideModal')" type="button" class="btn btn-secondary">
+            Cancelar
+        </button>
+        </div>
+
+    </div>
+</form>
+
+<div class="fadeIn" *ngIf="showMessage">
+
+    <div class="modal-header" ngbAutofocus>
+        <h5 class="modal-title text-warning" id="exampleModalLabel">
+            mensaje enviado</h5>
+        <button (click)="sendToFather('hideModal')" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+
+    <div class="modal-body fadeIn">
+        <h6 class="text-dark text-center">Se ha enviado un nuevo mensaje a su correo, deberá confirmarlo para completar su registro.</h6>
+    </div>
+    <div class="modal-footer">
+        <button (click)="sendToFather('hideModal')" class="btn btn-primary float-end" type="button">
+        Aceptar
+      </button>
+    </div>
+</div>

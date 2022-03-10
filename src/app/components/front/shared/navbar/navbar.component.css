@@ -1,0 +1,60 @@
+.navbar-p {
+    background: linear-gradient(to bottom, var(--red), var(--red-shadow));
+    height: 45px;
+    /* border-bottom: solid 1px grey; */
+}
+
+.navbar-p .section-1 {
+    position: relative;
+    width: 20%;
+    height: 45px;
+    display: inline-block;
+    /* border: solid 1px white; */
+}
+
+.content-center {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-p .section-2 {
+    position: relative;
+    width: 60%;
+    height: 45px;
+    display: inline-block;
+    /* border: solid 1px white; */
+}
+
+.navbar-p .section-3 {
+    position: relative;
+    width: 20%;
+    height: 45px;
+    display: inline-block;
+    /* border: solid 1px white; */
+}
+
+.logo {
+    height: 60%;
+}
+
+.navbar-p a {
+    padding: 6px 8px 6px 8px;
+    /* color: rgb(252, 61, 61); */
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Lato';
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    /* text-shadow: 2px 2px var(--red-shadow); */
+}
+
+.navbar-p a:hover {
+    background: rgba(255, 255, 255, 0.829);
+    color: var(--red);
+}

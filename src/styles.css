@@ -1,1 +1,299 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --red-l: #ff3f3f;
+    --red: #ff2424;
+    --red-shadow: #b60606;
+}
+
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+    border: transparent;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('src\assets\fonts\Lato-Regular.ttf') format('woff2');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('src\assets\fonts\Poppins-Regular.ttf') format('woff2');
+}
+
+@font-face {
+    font-family: 'Osswald';
+    src: url('src\assets\fonts\Oswald-VariableFont_wght.ttf') format('woff2');
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Osswald' !important;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--red);
+    text-shadow: 1px 1px rgb(131, 131, 131);
+}
+
+h5,
+h6 {
+    font-family: 'Poppins' !important;
+}
+
+.modal-title {
+    font-family: 'Osswald' !important;
+    letter-spacing: 0.05em;
+    color: var(--red);
+    text-shadow: 1px 1px rgb(131, 131, 131);
+    text-transform: uppercase;
+}
+
+.link {
+    color: var(--red);
+    font-family: 'Lato' !important;
+    font-weight: 550;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #ff3f3f;
+    cursor: pointer;
+}
+
+p {
+    font-size: 14px;
+    font-family: 'Lato' !important;
+}
+
+label {
+    font-family: 'Poppins' !important;
+    font-size: 13px;
+    color: black;
+    /* color: rgb(66, 66, 66); */
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+label.text-danger {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+    animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -o-animation: fadeIn 1s;
+    -ms-animation: fadeIn 1s;
+    color: rgb(255, 60, 0) !important;
+}
+
+.text-warning {
+    color: rgb(255, 60, 0) !important;
+}
+
+.fadeIn {
+    animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -o-animation: fadeIn 1s;
+    -ms-animation: fadeIn 1s;
+}
+
+.text-red {
+    color: var(--red);
+}
+
+
+/* input */
+
+.form-control {
+    border-radius: 0;
+    height: 34px;
+    font-size: 14px;
+    /* background: rgb(238, 238, 238); */
+    border: solid 1px rgb(187, 187, 187);
+    /* box-shadow: inset 2px 2px 5px rgba(136, 136, 136, 0.322); */
+}
+
+.form-control:focus {
+    border: solid 1px rgb(150, 150, 150) !important;
+}
+
+.form-control:hover {
+    border: solid 1px rgb(150, 150, 150) !important;
+}
+
+
+/* btn */
+
+.btn {
+    font-family: 'Poppins' !important;
+    border-radius: 0px;
+    box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.61);
+    /* letter-spacing: 0.1em; */
+    /* text-transform: uppercase; */
+}
+
+.btn-primary {
+    background: linear-gradient(to bottom, var(--red), var(--red-shadow));
+    border: solid 1px var(--red);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to bottom, #ff3f3f, #ec0000);
+    border: solid 1px var(--red);
+    box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.61);
+}
+
+.btn-primary:focus {
+    border: solid 1px var(--red);
+}
+
+.btn-primary:active {
+    background: linear-gradient(to bottom, var(--red), var(--red-shadow));
+    border: solid 1px var(--red);
+}
+
+.btn-secondary {
+    background: linear-gradient(to bottom, rgb(82, 82, 82), rgb(58, 58, 58));
+    border: solid 1px rgba(128, 128, 128, 0.61);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(to bottom, rgb(99, 98, 98), rgb(68, 68, 68)) !important;
+    box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.61);
+    border: solid 1px rgba(128, 128, 128, 0.61);
+}
+
+.btn-secondary:active {
+    background: linear-gradient(to bottom, rgb(82, 82, 82), rgb(58, 58, 58));
+    border: solid 1px rgba(128, 128, 128, 0.61);
+}
+
+
+/* modal */
+
+.modal-content {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
+    box-shadow: 10px 10px 5px rgba(56, 56, 56, 0.123);
+}
+
+.modal-header {
+    /* border-color: var(--red-shadow); */
+}
+
+.modal-footer {
+    /* border-color: var(--red-shadow); */
+}
+
+
+/* .modal-header {
+    background: linear-gradient(to bottom, var(--red), var(--red-shadow)) !important;
+}
+
+.modal-header .modal-title {
+    color: white !important;
+}
+
+.btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+} */
+
+
+/* margin */
+
+.ml-1 {
+    margin-left: 5px;
+}
+
+.ml-2 {
+    margin-left: 10px;
+}
+
+.mr-1 {
+    margin-right: 5px;
+}
+
+.mr-2 {
+    margin-right: 10px;
+}
+
+
+/* fade in animation */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.dropdown-menu .dropdown-item {
+    color: var(--red) !important;
+}
+
+.dropdown-menu {
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background: rgb(240, 240, 240) !important;
+    color: var(--red-l) !important;
+}
