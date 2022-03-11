@@ -15,6 +15,7 @@ import { User } from 'src/app/models/user.model';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
+
 export class NavbarComponent implements OnInit {
   loading = true;
   @ViewChild('modalLogin') modalLogin: ElementRef;
@@ -68,7 +69,10 @@ export class NavbarComponent implements OnInit {
     })
     this.userAuth = this.authS.getAuth();
     this.loading = false;
-    this.getAuth();
+    if(this.userAuth?.id){
+      this.getAuth();
+    }
+    
   }
   getAuth(){
     this.authS.getAuthServer().subscribe((data:any)=>{

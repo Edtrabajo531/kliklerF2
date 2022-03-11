@@ -1,13 +1,13 @@
 .navbar-p {
-    background: linear-gradient(to bottom, var(--red), var(--red-shadow));
-    height: 45px;
+    background: linear-gradient(to bottom, var(--red-l), var(--red));
+    height: 51px;
     /* border-bottom: solid 1px grey; */
 }
 
 .navbar-p .section-1 {
     position: relative;
     width: 20%;
-    height: 45px;
+    height: 50px;
     display: inline-block;
     /* border: solid 1px white; */
 }
@@ -24,7 +24,7 @@
 .navbar-p .section-2 {
     position: relative;
     width: 60%;
-    height: 45px;
+    height: 50px;
     display: inline-block;
     /* border: solid 1px white; */
 }
@@ -38,7 +38,8 @@
 }
 
 .logo {
-    height: 60%;
+    height: 70%;
+    border: 1px solid white;
 }
 
 .navbar-p a {

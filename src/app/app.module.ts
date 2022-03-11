@@ -15,6 +15,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoaderComponent } from './components/front/shared/loader/loader.component';
 import { ModalResendMailConfirmComponent } from './components/front/shared/modal-resend-mail-confirm/modal-resend-mail-confirm.component';
 
+import { AdminComponent } from './components/admin/admin.component';
+import { PlansComponent } from './components/admin/plans/plans.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +28,8 @@ import { ModalResendMailConfirmComponent } from './components/front/shared/modal
     ModalLoginComponent,
     LoaderComponent,
     ModalResendMailConfirmComponent,
+    PlansComponent,
+    AdminComponent,
 
  
   ],

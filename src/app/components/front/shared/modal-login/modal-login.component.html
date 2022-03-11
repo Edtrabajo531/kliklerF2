@@ -17,7 +17,7 @@
         </div>
         <div class="">
             <label for="">  Contraseña</label>
-            <input formControlName="password" class="form-control" type="text" maxlength="30" />
+            <input formControlName="password" class="form-control" type="password" maxlength="30" />
             <label *ngIf="validate('password').valid " class="text-danger "> {{validate('password').error }} </label>
         </div>
     </div>

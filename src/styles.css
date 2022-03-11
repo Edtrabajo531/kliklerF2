@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-    --red-l: #ff3f3f;
+    /* --red-l: #ff3f3f;
     --red: #ff2424;
-    --red-shadow: #b60606;
+    --red-shadow: #b60606; */
+    --red-l: rgb(231, 80, 95);
+    --red: rgb(220, 53, 69);
+    --red-shadow: rgb(220, 53, 69);
 }
 
 textarea:hover,
@@ -39,10 +42,7 @@ label:focus,
     src: url('src\assets\fonts\Oswald-VariableFont_wght.ttf') format('woff2');
 }
 
-h1,
-h2,
-h3,
-h4 {
+.title {
     font-family: 'Osswald' !important;
     text-transform: uppercase;
     font-weight: 500;
@@ -51,6 +51,10 @@ h4 {
     text-shadow: 1px 1px rgb(131, 131, 131);
 }
 
+h1,
+h2,
+h3,
+h4,
 h5,
 h6 {
     font-family: 'Poppins' !important;
@@ -296,4 +300,24 @@ label.text-danger {
 .dropdown-menu .dropdown-item:hover {
     background: rgb(240, 240, 240) !important;
     color: var(--red-l) !important;
+}
+
+.dropdown-item.text-dark {
+    color: rgb(37, 37, 37) !important;
+}
+
+.brand-image2 {
+    display: none;
+}
+
+.sidebar-collapse .brand-image2 {
+    display: block;
+}
+
+.sidebar-collapse .brand-text2 {
+    display: none;
+}
+
+.sidebar .nav-link:hover {
+    color: var(--red) !important;
 }
