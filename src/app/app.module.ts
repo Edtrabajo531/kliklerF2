@@ -17,8 +17,10 @@ import { ModalResendMailConfirmComponent } from './components/front/shared/modal
 
 import { AdminComponent } from './components/admin/admin.component';
 import { PlansComponent } from './components/admin/plans/plans.component';
-
-
+import { DataTablesModule } from 'angular-datatables';
+import { CreatePlanComponent } from './components/admin/plans/create-plan/create-plan.component';
+import { EditPlanComponent } from './components/admin/plans/edit-plan/edit-plan.component';
+import { DeletePlanComponent } from './components/admin/plans/delete-plan/delete-plan.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,9 @@ import { PlansComponent } from './components/admin/plans/plans.component';
     ModalResendMailConfirmComponent,
     PlansComponent,
     AdminComponent,
+    CreatePlanComponent,
+    EditPlanComponent,
+    DeletePlanComponent,
 
  
   ],
@@ -41,6 +46,7 @@ import { PlansComponent } from './components/admin/plans/plans.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot({ maxOpened: 2, closeButton: true, autoDismiss: true, enableHtml: true, timeOut: 6000, positionClass: 'toast-bottom-center' }),
     HttpClientModule,
+    DataTablesModule 
   ],
   providers: [
     {

@@ -51,6 +51,11 @@ label:focus,
     text-shadow: 1px 1px rgb(131, 131, 131);
 }
 
+.title-dark {
+    font-family: 'Osswald' !important;
+    text-transform: uppercase;
+}
+
 h1,
 h2,
 h3,
@@ -92,18 +97,20 @@ label {
     /* color: rgb(66, 66, 66); */
     font-weight: 500;
     letter-spacing: 0.05em;
+    margin: 0 !important;
 }
 
 label.text-danger {
     margin: 0 !important;
     padding: 0 !important;
-    font-size: 12px !important;
+    font-size: 10px !important;
     animation: fadeIn 1s;
     -webkit-animation: fadeIn 1s;
     -moz-animation: fadeIn 1s;
     -o-animation: fadeIn 1s;
     -ms-animation: fadeIn 1s;
     color: rgb(255, 60, 0) !important;
+    font-weight: 500;
 }
 
 .text-warning {
@@ -320,4 +327,35 @@ label.text-danger {
 
 .sidebar .nav-link:hover {
     color: var(--red) !important;
+}
+
+.modal {
+    z-index: 9999;
+}
+
+.table {
+    font-family: 'Lato';
+}
+
+table td {
+    padding: 3px 10px !important;
+    white-space: nowrap !important;
+}
+
+table th {
+    padding: 10px !important;
+    padding-right: 30px !important;
+    white-space: nowrap !important;
+}
+
+.dtr-control:before {
+    cursor: pointer;
+    width: 11px !important;
+    height: 11px !important;
+    font-size: 12px;
+}
+
+.dataTables_paginate .active a {
+    background: var(--red-l) !important;
+    border: solid 1px var(--red) !important;
 }

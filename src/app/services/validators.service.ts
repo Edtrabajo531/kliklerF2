@@ -136,7 +136,11 @@ export class ValidatorsService {
     } else if (error?.max) {
       return 'Este campo debe tener un valor máximo de: ' + error.max.max;
     } else if (error?.maxlength) {
-      return 'arreglar';
+      return (
+        'Este campo debe tener un máximo de: ' +
+        error?.maxlength.requiredLength +
+        ' caracateres.'
+      );
     } else if (error?.minlength) {
       return (
         'Este campo debe tener al menos: ' +

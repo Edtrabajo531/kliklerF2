@@ -1,25 +1,51 @@
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Planes</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a routerLink="/admin">Administrar</a></li>
-                    <li class="breadcrumb-item active">Planes</li>
-                </ol>
+<app-loader *ngIf="loading">
+</app-loader>
+<div class="container animate fadeIn pt-5">
+    <div class="row mb-3">
+        <div class="col-xs-12">
+            <button (click)="openModalCreate()" type="button" class="btn btn-primary float-end"> <i class="fas fa-plus"></i> Nuevo</button>
+            <h5 class="title-dark">Administrar / Planes</h5>
+        </div>
+    </div>
+    <div class="card ">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="pb-3">
+                        <table style="width: 100%;" datatable [dtOptions]="dtOptions" class="  table-hover table-bordered text-center"> </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- /.container-fluid -->
-</section>
+</div>
 
-<section class="content">
-    <div class="container-fluid">
+<!-- MODAL CREATE -->
+<ng-template #modalCreate let-c="close" let-d="dismiss ">
+    <app-create-plan *ngIf="formCreate" (sendToF)="receivedChild($event)"></app-create-plan>
+</ng-template>
+
+<!-- MODAL EDIT -->
+<ng-template #modalEdit let-c="close" let-d="dismiss ">
+    <app-edit-plan [data]="dataEdit" *ngIf="formEdit" (sendToF)="receivedChild($event)"></app-edit-plan>
+
+</ng-template>
+
+<!-- MODAL BORRAR -->
+<ng-template #modalDelete let-c="close" let-d="dismiss ">
+    <div class="modal-header ">
+        <h3 class="modal-title text-danger " id="modal-basic-title "> <i class="fas fa-exclamation"></i> Atención</h3>
+        <button type="button " class="close " aria-label="Close " (click)="d( 'Cross click') ">
+      <span aria-hidden="true ">×</span>
+  </button>
+    </div>
+    <div class="modal-body ">
+
+        <p class="text-white">¿Está segur@ de eliminar esta cuenta bancaria?</p>
 
     </div>
-    <!-- /.container-fluid -->
-</section>
-<!-- /.content -->
+    <div class="modal-footer ">
+        <button type="button " class="btn btn-primary btn-outline " (click)="d('cancel') "> <i class="fas fa-times "></i> Canelar</button>
+        <button type="button " class="btn btn-primary " (click)="c('yes') "> <i class="fas fa-check "></i> Aceptar</button>
+    </div>
+</ng-template>

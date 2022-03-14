@@ -79,6 +79,11 @@ export class NavbarComponent implements OnInit {
       console.log(data);
     })
   }
+
+  logout(){
+    this.authS.logout();
+  }
+  
   receiveChild(value: any) {
     
     if (value == 'showLoader') {
