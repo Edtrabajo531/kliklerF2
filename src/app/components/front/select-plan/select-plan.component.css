@@ -1,0 +1,35 @@
+#img-girl {
+    width: 180px;
+    height: 170px;
+    object-fit: cover;
+    float: left;
+}
+
+#banner {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 170px;
+}
+
+#img-dollars {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    opacity: 0.3;
+}
+
+.card-plan {
+    border: solid 1px var(--red);
+}
+
+.card-plan:hover {
+    cursor: pointer;
+    border: solid 1px rgb(224, 224, 224);
+}
+
+.card-selected {
+    border: solid 2px var(--red-l) !important;
+}

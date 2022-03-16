@@ -17,6 +17,8 @@ export class PlansComponent implements OnInit {
   @ViewChild('modalCreate') modalCreate: ElementRef;
   @ViewChild('modalEdit') modalEdit: ElementRef;
   @ViewChild('modalDelete') modalDelete: ElementRef;
+  @ViewChild('modalLicense') modalLicense: ElementRef;
+
   @ViewChild(DataTableDirective, { static: false })
   datatableElement: DataTableDirective;
   dtOptions: DataTables.Settings = {};
@@ -25,6 +27,9 @@ export class PlansComponent implements OnInit {
   formCreate = false;
   formEdit = false;
   dataEdit = [];
+  
+  formLicense:any;
+  license:any;
   constructor(
     private planS: PlansService,
     private router: Router,
@@ -38,7 +43,7 @@ export class PlansComponent implements OnInit {
 
   ngOnInit(): void {
     this.dtOptions = {
-      order: [[1, "desc"]],
+      order: [[0, "desc"]],
       lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "Todas"]],
       pageLength: 10,
       responsive: true,
@@ -63,15 +68,17 @@ export class PlansComponent implements OnInit {
       },
       ajax: (dataTablesParameters: any, callback) => {
         this.planS.list().subscribe((data: any) => {
+          console.log(data);
+          
           this.dtTrigger.next("");
           this.loading = false;
 
-          console.log(data);
+          this.license = data.license;
 
           callback({
             recordsTotal: data.total,
             recordsFiltered: data.to,
-            data: data
+            data: data.list
           });
         });
       },
@@ -86,7 +93,12 @@ export class PlansComponent implements OnInit {
           data: null,
           orderable: true,
           render: (data, type, full) => {
-            return `<div class="text-center"><button  class="mb-1 btn_edit btn btn-xs  btn-success" style="margin-right:5px"> <i class="fa fa-edit" ></i> </button><button  class="mb-1 btn_delete btn btn-xs  btn-danger"> <i class="fa fa-ban" ></i> </button></div>`;
+            if(data.name == 'Gratis'){
+              
+              return `<div class="text-center"><button disabled class="mb-1 btn_edit btn btn-xs  btn-success" style="margin-right:5px"> <i class="fa fa-edit" ></i> </button><button disabled  class="mb-1 btn_delete btn btn-xs  btn-danger"> <i class="fa fa-ban" ></i> </button></div>`;
+            }else{
+              return `<div class="text-center"><button  class="mb-1 btn_edit btn btn-xs  btn-success" style="margin-right:5px"> <i class="fa fa-edit" ></i> </button><button  class="mb-1 btn_delete btn btn-xs  btn-danger"> <i class="fa fa-ban" ></i> </button></div>`;
+            }
 
           }
         },
@@ -97,29 +109,50 @@ export class PlansComponent implements OnInit {
         },
         {
           title: 'Costo',
-          data: 'cost'
+          data:null,
+          render: (data, type, full) => {
+            return data.cost+" $";
+          }
         },
         {
           title: "Ganancia",
-          data: 'profit',
-          orderable: true,
+          data: null,
+          render: (data, type, full) => {
+            return data.profit+" %";
+          }
         },
         {
           title: "Total Ganancia",
-          data: 'total_profit',
-          orderable: true,
+          data: null,
+          render: (data, type, full) => {
+            return data.total_profit+" $";
+          }
         },
+       
         {
           title: "Duración",
-          data: 'duration',
+          data: null,
           orderable: true,
+          render: (data, type, full) => {
+            if(data.name == 'Gratis'){
+              return '<i class="fas fa-infinity text-muted"></i>'
+            }else{
+              return data.duration+" mes(es)";
+            }
+          }
         },
         {
           title: "Limite de cobro",
-          data: 'charge_limit',
+          data: null,
+          render: (data, type, full) => {
+            return data.charge_limit+" $";
+          }
+        },
+        {
+          title: "Limite Prod.",
+          data: 'products',
           orderable: true,
         },
-
 
       ],
       rowCallback: (row: Node, data: any | Object, index: number) => {
@@ -137,22 +170,29 @@ export class PlansComponent implements OnInit {
       }
     };
   }
-
+  
+  hideForms(){
+    let self = this;
+    setTimeout(function(){
+      self.formCreate = false;
+      self.formEdit = false;
+      self.formLicense = false;
+    },100);
+   
+  }
   receivedChild(message: any) {
 
     if (message == "newData") {
-      this.modalS.dismissAll();
-        this.formCreate = false;
-      this.formEdit = false;
       this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
         dtInstance.ajax.reload();
+        this.modalS.dismissAll();
+        this.hideForms();
       });
     } else if (message == 'showLoader') {
       this.loading = true;
     } else if (message == 'hideModal') {
       this.modalS.dismissAll();
-        this.formCreate = false;
-      this.formEdit = false;
+      this.hideForms();
     } else if (message == 'hideLoader') {
       this.loading = false;
     }
@@ -208,6 +248,17 @@ export class PlansComponent implements OnInit {
     });
   }
 
+  openModalLicense() {
+    this.formLicense = true;
+    this.modalS.open(this.modalLicense, { ariaLabelledBy: 'modal-basic-title', size: 'md' }).result.then((result) => {
+      if (result === 'yes') {
+
+      }
+      return;
+    }, (reason) => {
+      return;
+    });
+  }
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();

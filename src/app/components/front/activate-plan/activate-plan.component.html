@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+
+<div class="container pt-5">
+    <h3 class="title">Activar plan: <span class="text-dark">{{plan?.name}} </span> </h3>
+    <h6>Para activar plan "{{plan?.name}}" completa los siguientes pasos: </h6>
+
+    <div class="form-inline">
+        <div class="step">
+            1
+        </div>
+        <div class="step">
+            2
+        </div>
+        <div class="step active">
+            3
+        </div>
+    </div>
+
+    <router-outlet></router-outlet>
+
+</div>

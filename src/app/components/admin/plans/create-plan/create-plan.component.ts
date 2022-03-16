@@ -43,9 +43,10 @@ export class CreatePlanComponent implements OnInit {
       {
         name: ['', [Validators.required]],
         cost: ['', [Validators.required,Validators.max(999999999999) ,this.validatorsS.float]],
-        profit: ['', [Validators.required, Validators.max(100),this.validatorsS.number]],
+        profit: ['', [Validators.required, Validators.max(100),this.validatorsS.float]],
         duration: ['', [Validators.required, this.validatorsS.number,Validators.min(1)]],
         charge_limit: ['', [Validators.required, Validators.max(999999999999),this.validatorsS.float]],
+        products: ['', [Validators.required, this.validatorsS.number,Validators.min(1)]],
       },
 
     );

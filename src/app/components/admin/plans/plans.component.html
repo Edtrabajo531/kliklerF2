@@ -1,10 +1,22 @@
 <app-loader *ngIf="loading">
 </app-loader>
-<div class="container animate fadeIn pt-5">
+<div class="container-admin fadeIn pt-3">
     <div class="row mb-3">
         <div class="col-xs-12">
             <button (click)="openModalCreate()" type="button" class="btn btn-primary float-end"> <i class="fas fa-plus"></i> Nuevo</button>
             <h5 class="title-dark">Administrar / Planes</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-1" style="width: 200px;">
+                <div class="card-body p-2">
+                    <p class="m-0" for="" style="font-size: 12px;"> Licencia (Inscripción): </p>
+                    <button (click)="openModalLicense()" class="btn btn-success float-end btn-xs"> <i class="fas fa-edit"></i> </button>
+                    <p class="m-0"> {{license}} $</p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="card ">
@@ -30,22 +42,26 @@
     <app-edit-plan [data]="dataEdit" *ngIf="formEdit" (sendToF)="receivedChild($event)"></app-edit-plan>
 
 </ng-template>
-
-<!-- MODAL BORRAR -->
+<!-- MODAL EDIT LICENSE -->
+<ng-template #modalLicense let-c="close" let-d="dismiss ">
+    <app-edit-license [data]="license" *ngIf="formLicense" (sendToF)="receivedChild($event)"></app-edit-license>
+</ng-template>
+<!-- MODAL DELETE -->
 <ng-template #modalDelete let-c="close" let-d="dismiss ">
-    <div class="modal-header ">
-        <h3 class="modal-title text-danger " id="modal-basic-title "> <i class="fas fa-exclamation"></i> Atención</h3>
+    <div class="modal-header bg-danger">
+        <h5 class="modal-title text-white " id="modal-basic-title "> <i class="fas fa-exclamation"></i> Atención</h5>
         <button type="button " class="close " aria-label="Close " (click)="d( 'Cross click') ">
       <span aria-hidden="true ">×</span>
   </button>
     </div>
     <div class="modal-body ">
 
-        <p class="text-white">¿Está segur@ de eliminar esta cuenta bancaria?</p>
+        <h6 class="text-danger">¿Está segur@ de eliminar este plan?</h6>
 
     </div>
     <div class="modal-footer ">
-        <button type="button " class="btn btn-primary btn-outline " (click)="d('cancel') "> <i class="fas fa-times "></i> Canelar</button>
-        <button type="button " class="btn btn-primary " (click)="c('yes') "> <i class="fas fa-check "></i> Aceptar</button>
+        <button type="button " class="btn btn-secondary" (click)="d('cancel')">  Canelar</button>
+
+        <button type="button " class="btn btn-primary" (click)="c('yes')">Aceptar</button>
     </div>
 </ng-template>

@@ -12,24 +12,28 @@ export class PlansService {
     private http:HttpClient
   ) { }
 
+  activate_plan(id:number){
+    return this.http.post(this.ENDPOINT + "activate-plan/"+id, "");
+  }
+
   list(){
     return this.http.post(this.ENDPOINT + "plans", "");
   }
 
   get(id:number){
-    return this.http.post(this.ENDPOINT + "plan/", {id:id});
+    return this.http.post(this.ENDPOINT + "admin/plan/", {id:id});
   }
 
   store(data:any[]){
-    return this.http.post(this.ENDPOINT + "plan-store", data);
+    return this.http.post(this.ENDPOINT + "admin/plan-store", data);
   }
 
   update(data:any[]){
-    return this.http.post(this.ENDPOINT + "plan-update", data);
+    return this.http.post(this.ENDPOINT + "admin/plan-update", data);
   }
 
   delete(id:number){
-    return this.http.post(this.ENDPOINT + "plan-delete/"+id, "");
+    return this.http.post(this.ENDPOINT + "admin/plan-delete/"+id, "");
   }
   
 }

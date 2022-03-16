@@ -1,0 +1,35 @@
+<div class="container pt-5 fadeIn">
+    <h6>Haz seleccionado el plan <strong>"{{selectedPlan.name}}"</strong> </h6>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="title">Detalles</h5>
+            <div class="row">
+
+                <p class="m-0 col-md-4"><span class="font-600 ">Precio:</span> {{selectedPlan.cost}} $</p>
+                <p class="m-0 col-md-4"><span class="font-600 ">Ganancia:</span> {{selectedPlan.profit}} %</p>
+                <p class="m-0 col-md-4"><span class="font-600 ">Ganancias al mes:</span> {{selectedPlan.total_profit}} $</p>
+                <p class="m-0 col-md-4"><span class="font-600 ">Cobro:</span> + {{ selectedPlan.charge_limit }} $</p>
+                <p class="m-0 col-md-4"><span class="font-600 ">Publicaciones:</span> + {{ selectedPlan.products }} </p>
+            </div>
+        </div>
+    </div>
+
+    <h6 class="">Para activar el plan: <strong>"{{selectedPlan.name}}"</strong> deberas abonar: </h6>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="title">Abono para activación</h5>
+            <div class="row">
+                <p class="m-0 col-md-6"><span class="font-600 ">Efectivo / transferencia / depostio:</span> {{payment}} $</p>
+                <p class="m-0 col-md-6"><span class="font-600 "> BTC transferencia a cartera: </span> {{paymentBtc}} $ USD </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button routerLink="/activar-plan/{{selectedPlan.id}}" type="button" class="btn btn-primary float-end"> <i class="fas fa-check"></i> Activar Plan  </button>
+            <button (click)="sendToF('step1')" type="button" class="btn btn-secondary float-end mr-2"> <i class="fas fa-arrow-left"></i> Atrás  </button>
+        </div>
+    </div>
+</div>

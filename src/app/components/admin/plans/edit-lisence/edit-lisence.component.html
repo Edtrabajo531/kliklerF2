@@ -1,0 +1,23 @@
+XXXXX LIC
+<form [formGroup]="form" *ngIf="form" (ngSubmit)="submit()" autocomplete="off">
+    <div class="modal-header" ngbAutofocus>
+        <h5 class="modal-title" id="exampleModalLabel"> Editar costo Licencia</h5>
+        <button (click)="sendToFather('hideModal')" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="form-group col-md-6 ">
+                <label for="">Costo</label>
+                <input maxlength="15" formControlName="cost" class="form-control" placeholder="" type="text" />
+                <label *ngIf="validate('cost').valid " class="text-danger "> {{validate('cost').error }} </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" (click)="sendToFather('hideModal')"> Cancelar </button>
+        <button class="btn btn-primary" type="submit"> Guardar </button>
+    </div>
+
+    <!-- Submit Form Button Ends -->
+</form>

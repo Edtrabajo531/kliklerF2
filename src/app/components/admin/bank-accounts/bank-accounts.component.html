@@ -1,0 +1,53 @@
+<app-loader *ngIf="loading"></app-loader>
+<div class="container-admin pt-5 fadeIn">
+    <div class="row mb-3">
+        <div class="col-xs-12">
+            <h5 class="title-dark" style="margin-bottom: -20px;">Administrar / Cuentas Bancarias</h5>
+
+            <button (click)="openModalCreate()" type="button" class="btn btn-primary float-end"> <i class="fas fa-plus"></i> Nuevo</button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="pb-5">
+                <table style="width: 100%;" datatable [dtOptions]="dtOptions" class="table table-bordered table-hover"> </table>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- MODAL CREATE -->
+<ng-template #modalCreate let-c="close" let-d="dismiss ">
+
+    <app-modal-create-bank *ngIf="formModalCreate" (sendToF)="receivedChild($event)"></app-modal-create-bank>
+</ng-template>
+
+
+<!-- MODAL EDIT -->
+<ng-template #modalEdit let-c="close" let-d="dismiss ">
+
+    <app-modal-edit-bank *ngIf="formModalEdit" (sendToF)="receivedChild($event)" [data]="dataModalEdit"></app-modal-edit-bank>
+</ng-template>
+
+<!-- MODAL BORRAR -->
+<ng-template #modalDelete let-c="close" let-d="dismiss ">
+    <div class="modal-header bg-danger">
+        <h5 class="modal-title text-white " id="modal-basic-title "> <i class="fas fa-exclamation"></i> Atención</h5>
+        <button type="button " class="close " aria-label="Close " (click)="d( 'Cross click') ">
+      <span aria-hidden="true ">×</span>
+  </button>
+    </div>
+    <div class="modal-body ">
+
+        <h6 class="text-danger">¿Está segur@ de eliminar esta cuenta bancaria?</h6>
+
+    </div>
+    <div class="modal-footer ">
+        <button type="button " class="btn btn-secondary" (click)="d('cancel') "> Canelar</button>
+        <button type="button " class="btn btn-primary " (click)="c('yes') "> Aceptar</button>
+    </div>
+</ng-template>

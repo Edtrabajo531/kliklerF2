@@ -17,7 +17,7 @@
             </div>
             <div class="form-group col-md-6 ">
                 <label for="">Ganancia (%)</label>
-                <input maxlength="3" formControlName="profit" class="form-control" type="text" />
+                <input maxlength="6" formControlName="profit" class="form-control" type="text" />
                 <label *ngIf="validate('profit').valid " class="text-danger "> {{validate('profit').error }} </label>
             </div>
             <div class="form-group col-md-6 ">
@@ -31,7 +31,11 @@
                 <input maxlength="15" formControlName="charge_limit" class="form-control" placeholder="" type="text" />
                 <label *ngIf="validate('charge_limit').valid " class="text-danger "> {{validate('charge_limit').error }} </label>
             </div>
-
+            <div class="form-group col-md-6 ">
+                <label for="">limite productos</label>
+                <input maxlength="10" formControlName="products" class="form-control" type="text" />
+                <label *ngIf="validate('products').valid " class="text-danger "> {{validate('products').error }} </label>
+            </div>
         </div>
     </div>
 

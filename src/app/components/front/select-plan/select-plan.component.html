@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+
+<div class="container pt-5 fadeIn" *ngIf="step == 1">
+    <div class="card">
+        <div class="card-body p-0">
+            <img id="img-girl" src="assets\images\default\chica-dinero.jpg" alt="">
+
+            <div id="banner">
+                <img id="img-dollars" src="assets\images\default\monton-de-dolares.jpg" alt="">
+                <div class="row" style="z-index: 5;">
+                    <div class="col-12 p-5">
+                        <h3 class="title">Selecciona tu plan</h3>
+                        <h6>Escoge uno de nuestro planes <span class="text-danger">premium</span> para recibir grandes beneficios, o continua con una cuenta gratis.</h6>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- {{plans | json}} -->
+    <div *ngIf="plans" class="fadeIn">
+        <h4 class="title">Planes</h4>
+        <p class="mt-0">Haz clic sobre el plan deseado y presiona el botón "siguiente" para continuar.</p>
+        <div class="row" *ngIf="plans">
+            <div class="col-3 mb-4" *ngFor="let plan of plans">
+                <div [ngClass]="{'card-selected' : selectedPlan?.id == plan.id}" class="card card-plan" (click)="selectedPlan = plan">
+                    <div class="card-header bg-white ">
+                        <div class="form-check form-check-inline m-0">
+                            <input [checked]="selectedPlan?.id == plan.id" class="form-check-input" type="radio" name="selectPlan" value="{{plan.id}}">
+                            <h6 class="form-check-label m-0 title-dark" for="inlineRadio1">{{plan.name}}</h6>
+                        </div>
+                    </div>
+                    <div class="card-body bg-danger ">
+                        <p class="m-0 text-white "><span class="font-500 ">Precio:</span> {{plan.cost}} $</p>
+                        <p class="m-0 text-white "><span class="font-500 ">Ganancia:</span> {{plan.profit}} %</p>
+                        <p class="m-0 text-white "><span class="font-500 ">Cobro:</span> + {{ plan.charge_limit }} $</p>
+                        <p class="m-0 text-white "><span class="font-500 ">Publicaciones:</span> {{ plan.products }} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button (click)="goStep2()" type="button" class="btn btn-primary float-end"> Siguiente <i class="fas fa-arrow-right"></i> </button>
+        </div>
+    </div>
+    <br>
+    <br>
+
+</div>
+
+<app-step-p2 (sendToFather)="receivedChild($event)" [selectedPlan]="selectedPlan" *ngIf="step == 2"></app-step-p2>
+
+<app-step-p3 (sendToFather)="receivedChild($event)" [selectedPlan]="selectedPlan" *ngIf="step == 3"></app-step-p3>

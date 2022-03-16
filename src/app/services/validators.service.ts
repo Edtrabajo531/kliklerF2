@@ -12,9 +12,15 @@ export class ValidatorsService {
 
   float(control: FormControl) {
     if (control?.value) {
-      let url = control.value;
+      let value = control.value;
+      console.log(value);
+      console.log(value);
+      console.log(value);
+      console.log(value);
+
+      
       var regExp = /^[0-9]+(\,[0-9]{1,20})?$/;
-      if (url.match(regExp)) {
+      if (value.match(regExp)) {
         return true;
       } else {
         return { float: true };
@@ -26,9 +32,9 @@ export class ValidatorsService {
   }
   only_letters_numbers_underscore(control: FormControl) {
     if (control?.value) {
-      let url = control.value;
+      let value = control.value;
       var regExp = /^[a-zA-Z0-9ZñÑáéíóúÁÉÍÓÚ_]*$/;
-      if (url.match(regExp)) {
+      if (value.match(regExp)) {
         return true;
       } else {
         return { only_letters_numbers_underscore: true };

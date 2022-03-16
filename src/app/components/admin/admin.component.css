@@ -1,0 +1,4 @@
+.nav .nav-item a.active {
+    background: var(--red-l) !important;
+    border-radius: 0;
+}

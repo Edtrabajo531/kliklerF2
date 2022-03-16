@@ -18,13 +18,17 @@ input:focus,
 button:focus,
 button:active,
 button:hover,
+select:active,
+select:hover,
+select:focus,
 label:focus,
 .btn:active,
 .btn.active {
     outline: 0px !important;
     -webkit-appearance: none;
     box-shadow: none !important;
-    border: transparent;
+    border-color: transparent;
+    border-color: grey !important;
 }
 
 @font-face {
@@ -48,7 +52,7 @@ label:focus,
     font-weight: 500;
     letter-spacing: 0.05em;
     color: var(--red);
-    text-shadow: 1px 1px rgb(131, 131, 131);
+    text-shadow: 1px 1px rgb(70, 70, 70);
 }
 
 .title-dark {
@@ -86,15 +90,22 @@ h6 {
 }
 
 p {
-    font-size: 14px;
+    font-size: 15px;
     font-family: 'Lato' !important;
+}
+
+.font-500 {
+    font-weight: 500;
+}
+
+.bg-danger p {
+    text-shadow: 1px 1px grey !important;
 }
 
 label {
     font-family: 'Poppins' !important;
     font-size: 13px;
     color: black;
-    /* color: rgb(66, 66, 66); */
     font-weight: 500;
     letter-spacing: 0.05em;
     margin: 0 !important;
@@ -129,6 +140,10 @@ label.text-danger {
     color: var(--red);
 }
 
+.font-600 {
+    font-weight: 600;
+}
+
 
 /* input */
 
@@ -155,19 +170,19 @@ label.text-danger {
 .btn {
     font-family: 'Poppins' !important;
     border-radius: 0px;
-    box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.61);
+    box-shadow: 2px 2px 2px rgba(128, 128, 128, 0.61);
     /* letter-spacing: 0.1em; */
     /* text-transform: uppercase; */
 }
 
 .btn-primary {
-    background: linear-gradient(to bottom, var(--red), var(--red-shadow));
+    background: linear-gradient(to bottom, var(--red-l), var(--red-shadow));
     border: solid 1px var(--red);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(to bottom, #ff3f3f, #ec0000);
-    border: solid 1px var(--red);
+    background: linear-gradient(to bottom, rgb(252, 118, 132), rgb(247, 81, 97));
+    border: solid 1px var(--red-l) !important;
     box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.61);
 }
 
@@ -358,4 +373,81 @@ table th {
 .dataTables_paginate .active a {
     background: var(--red-l) !important;
     border: solid 1px var(--red) !important;
+}
+
+.toast-bottom-center {
+    bottom: 50px !important;
+}
+
+.container {
+    max-width: 900px !important
+}
+
+.container-admin {
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+
+/* cards */
+
+.card {
+    box-shadow: 2px 2px 2px rgba(156, 156, 156, 0.199);
+    border: solid 1px rgb(221, 221, 221);
+    overflow: hidden;
+}
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: var(--red);
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+.btn-xs {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    font-size: 12px;
+}
+
+.nav-link.active:focus {
+    color: white !important;
+}
+
+.nav-link:focus {
+    color: black !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.text-dark {
+    text-shadow: none;
 }

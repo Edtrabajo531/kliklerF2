@@ -15,13 +15,13 @@
 
             <!-- Input Field Starts -->
             <div class="form-group col-md-6 ">
-                <label for="">Costo</label>
+                <label for="">Valor mínimo</label>
                 <input maxlength="15" formControlName="cost" class="form-control" placeholder="" type="text" />
                 <label *ngIf="validate('cost').valid " class="text-danger "> {{validate('cost').error }} </label>
             </div>
 
             <div class="form-group col-md-6 ">
-                <label for="">Ganancia (%)</label>
+                <label for="">Ganancia (%) mensual</label>
                 <input maxlength="3" formControlName="profit" class="form-control" type="text" />
                 <label *ngIf="validate('profit').valid " class="text-danger "> {{validate('profit').error }} </label>
             </div>
@@ -31,10 +31,15 @@
 
                 <label *ngIf="validate('duration').valid " class="text-danger "> {{validate('duration').error }} </label>
             </div>
-            <div class="form-group col-md-6 ">
+            <!-- <div class="form-group col-md-6 ">
                 <label for="">Limite de cobro ($)</label>
                 <input maxlength="15" formControlName="charge_limit" class="form-control" placeholder="" type="text" />
                 <label *ngIf="validate('charge_limit').valid " class="text-danger "> {{validate('charge_limit').error }} </label>
+            </div> -->
+            <div class="form-group col-md-6 ">
+                <label for="">Límite productos</label>
+                <input maxlength="10" formControlName="products" class="form-control" type="text" />
+                <label *ngIf="validate('products').valid " class="text-danger "> {{validate('products').error }} </label>
             </div>
 
         </div>

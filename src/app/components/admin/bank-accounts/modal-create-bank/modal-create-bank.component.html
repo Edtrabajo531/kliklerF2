@@ -1,0 +1,55 @@
+<form [formGroup]="form" *ngIf="form" (ngSubmit)="submit()" autocomplete="off">
+    <div class="modal-header ">
+        <h5 class="modal-title" id="modal-basic-title"> Agregar Cuenta </h5>
+        <button type="button " class="close " aria-label="Close " (click)="sendToFather('hideModal')">
+        <span aria-hidden="true ">×</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+
+            <!-- Input Field Starts -->
+            <div class="form-group col-md-6 col-lg-4">
+                <label for="">Nombre del banco</label>
+                <input maxlength="30" formControlName="name" class="form-control" name="alias" placeholder="" type="text" required />
+                <label *ngIf="validate('name').valid " class="text-danger "> {{validate('name').error }} </label>
+            </div>
+
+            <!-- Input Field Starts -->
+            <div class="form-group col-md-6 col-lg-4">
+                <label for="">Propietario</label>
+                <input maxlength="40" formControlName="holder" class="form-control" placeholder="" type="text" required />
+                <label *ngIf="validate('holder').valid " class="text-danger "> {{validate('holder').error }} </label>
+            </div>
+
+            <div class="form-group col-md-6 col-lg-4">
+                <label for="">Identificación</label>
+                <input maxlength="12" formControlName="identification" class="form-control" type="text" required />
+                <label *ngIf="validate('identification').valid " class="text-danger "> {{validate('identification').error }} </label>
+            </div>
+            <div class="form-group col-md-6 col-lg-4">
+                <label for="">Número de cuenta</label>
+                <input maxlength="100" formControlName="numberAccount" class="form-control" type="text" required />
+
+                <label *ngIf="validate('numberAccount').valid " class="text-danger "> {{validate('numberAccount').error }} </label>
+            </div>
+            <div class="form-group col-md-6 col-lg-4">
+                <label for="">Tipo de cuenta</label>
+                <select formControlName="type" class="form-control">
+                  <option value="Ahorro">Ahorro</option>
+                  <option value="Corriente">Corriente</option>
+                </select>
+                <label *ngIf="validate('type').valid " class="text-danger "> {{validate('type').error }} </label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" (click)="sendToFather('hideModal')"> Cancelar </button>
+        <button class="btn btn-primary" type="submit"> Guardar </button>
+    </div>
+
+    <!-- Submit Form Button Ends -->
+</form>

@@ -1,0 +1,51 @@
+<app-loader *ngIf="loading">
+</app-loader>
+<div class="container-admin fadeIn pt-5" style="">
+    <div class="row mb-3">
+        <div class="col-xs-12">
+            <button (click)="openModalCreate()" type="button" class="btn btn-primary float-end"> <i class="fas fa-plus"></i> Nuevo</button>
+            <h5 class="title-dark">Administrar / Carteras Bitcoin</h5>
+        </div>
+    </div>
+    <div class="card ">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="pb-3" style="overflow: auto;">
+                        <table style="width: 100%;" datatable [dtOptions]="dtOptions" class="  table-hover table-bordered text-center"> </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL CREATE -->
+<ng-template #modalCreate let-c="close" let-d="dismiss ">
+    <app-create-wallet *ngIf="formCreate" (sendToF)="receivedChild($event)"></app-create-wallet>
+</ng-template>
+
+<!-- MODAL EDIT -->
+<ng-template #modalEdit let-c="close" let-d="dismiss ">
+    <app-edit-wallet [data]="dataEdit" *ngIf="formEdit" (sendToF)="receivedChild($event)"></app-edit-wallet>
+
+</ng-template>
+
+<!-- MODAL DELETE -->
+<ng-template #modalDelete let-c="close" let-d="dismiss ">
+    <div class="modal-header bg-danger">
+        <h5 class="modal-title text-white " id="modal-basic-title "> <i class="fas fa-exclamation"></i> Atención</h5>
+        <button type="button " class="close " aria-label="Close " (click)="d( 'Cross click') ">
+          <span aria-hidden="true ">×</span>
+      </button>
+    </div>
+    <div class="modal-body ">
+
+        <h6 class="text-danger">¿Está segur@ de eliminar esta cartera?</h6>
+
+    </div>
+    <div class="modal-footer ">
+        <button type="button " class="btn btn-secondary" (click)="d('cancel')">Canelar</button>
+        <button type="button " class="btn btn-primary" (click)="c('yes')">Aceptar</button>
+    </div>
+</ng-template>

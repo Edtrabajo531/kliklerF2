@@ -10,7 +10,7 @@ import { Observable, Subscriber, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
@@ -25,7 +25,7 @@ export class AuthInterceptorService implements HttpInterceptor {
   constructor(
     private router: Router,
     private authService: AuthService,
-    // private toastrS: ToastrService,
+    private toastrS: ToastrService,
     private authS: AuthService,
 
     @Inject(PLATFORM_ID) private platformid: any
@@ -57,14 +57,16 @@ export class AuthInterceptorService implements HttpInterceptor {
         if (err.status === 401) {
           if (!request.url.includes('iniciar-sesion')) {
             if (err.error.message == 'role-sin-permisos') {
-              // this.toastrS.warning('No tiene permisos para ejecutar esta accion.')
+              this.toastrS.warning('No tiene permisos para ejecutar esta acción.')
               this.router.navigateByUrl("/");
             }else if (err.error.message == 'usuario-bloqueado') {
-                // this.toastrS.warning('Su cuenta ha sido bloqueada.');
-                this.authS.logout();
-                // this.router.navigateByUrl("/");
+              this.toastrS.warning('Su cuenta ha sido bloqueada.');
+              this.authS.logout();
+              // this.router.navigateByUrl("/");
+            }else if (err.error.message == 'sin-plan') {
+                this.router.navigateByUrl("/planes");
             } else {
-              // this.toastrS.warning('Su sesión ha expirado.');
+              this.toastrS.warning('Su sesión ha expirado.');
               this.authS.logout();
             }
 

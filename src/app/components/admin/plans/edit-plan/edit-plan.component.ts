@@ -40,15 +40,17 @@ export class EditPlanComponent implements OnInit {
   }
 
   formR() {
-    console.log(this.data);
+    console.log("AXA");
     
     this.form = this.formBuilder.group(
       {
+        id: [this.data.id],
         name: [this.data.name, [Validators.required]],
         cost: [this.data.cost, [Validators.required,Validators.max(999999999999) ,this.validatorsS.float]],
-        profit: [this.data.profit, [Validators.required, Validators.max(100),this.validatorsS.number]],
+        profit: [this.data.profit, [Validators.required, Validators.max(100),this.validatorsS.float]],
         duration: [this.data.duration, [Validators.required, this.validatorsS.number,Validators.min(1)]],
         charge_limit: [this.data.charge_limit, [Validators.required, Validators.max(999999999999),this.validatorsS.float]],
+        products: [this.data.products, [Validators.required, this.validatorsS.number,Validators.min(1)]],
       },
 
     );
@@ -65,7 +67,7 @@ export class EditPlanComponent implements OnInit {
       return;
     }
 
-    this.planS.store(this.form.value).subscribe(
+    this.planS.update(this.form.value).subscribe(
       (response: any) => {
         this.sendToFather('hideLoader');
         let detect_errors_server = this.validatorsS.detect_errors_server(response,this.form);

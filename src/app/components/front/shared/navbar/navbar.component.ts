@@ -72,12 +72,10 @@ export class NavbarComponent implements OnInit {
     if(this.userAuth?.id){
       this.getAuth();
     }
-    
   }
+  
   getAuth(){
-    this.authS.getAuthServer().subscribe((data:any)=>{
-      console.log(data);
-    })
+    this.authS.getAuth();
   }
 
   logout(){
