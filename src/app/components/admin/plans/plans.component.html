@@ -7,12 +7,11 @@
             <h5 class="title-dark">Administrar / Planes</h5>
         </div>
     </div>
-
     <div class="row">
         <div class="col-12">
-            <div class="card mb-1" style="width: 200px;">
+            <div class="card mb-1" style="width: 165px;">
                 <div class="card-body p-2">
-                    <p class="m-0" for="" style="font-size: 12px;"> Licencia (Inscripción): </p>
+                    <p class="m-0 font-600" for="" style="font-size: 12px;"> Licencia (Inscripción): </p>
                     <button (click)="openModalLicense()" class="btn btn-success float-end btn-xs"> <i class="fas fa-edit"></i> </button>
                     <p class="m-0"> {{license}} $</p>
                 </div>
@@ -36,15 +35,13 @@
 <ng-template #modalCreate let-c="close" let-d="dismiss ">
     <app-create-plan *ngIf="formCreate" (sendToF)="receivedChild($event)"></app-create-plan>
 </ng-template>
-
 <!-- MODAL EDIT -->
 <ng-template #modalEdit let-c="close" let-d="dismiss ">
     <app-edit-plan [data]="dataEdit" *ngIf="formEdit" (sendToF)="receivedChild($event)"></app-edit-plan>
-
 </ng-template>
 <!-- MODAL EDIT LICENSE -->
 <ng-template #modalLicense let-c="close" let-d="dismiss ">
-    <app-edit-license [data]="license" *ngIf="formLicense" (sendToF)="receivedChild($event)"></app-edit-license>
+    <app-edit-lisence [data]="license" *ngIf="formLicense" (sendToF)="receivedChild($event)"></app-edit-lisence>
 </ng-template>
 <!-- MODAL DELETE -->
 <ng-template #modalDelete let-c="close" let-d="dismiss ">
@@ -55,13 +52,10 @@
   </button>
     </div>
     <div class="modal-body ">
-
         <h6 class="text-danger">¿Está segur@ de eliminar este plan?</h6>
-
     </div>
     <div class="modal-footer ">
         <button type="button " class="btn btn-secondary" (click)="d('cancel')">  Canelar</button>
-
         <button type="button " class="btn btn-primary" (click)="c('yes')">Aceptar</button>
     </div>
 </ng-template>

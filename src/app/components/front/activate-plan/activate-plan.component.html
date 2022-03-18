@@ -1,21 +1,35 @@
 <app-navbar></app-navbar>
-
+<app-loader *ngIf="loading"></app-loader>
 <div class="container pt-5">
     <h3 class="title">Activar plan: <span class="text-dark">{{plan?.name}} </span> </h3>
     <h6>Para activar plan "{{plan?.name}}" completa los siguientes pasos: </h6>
 
     <div class="form-inline">
-        <div class="step">
+        <div class="step" [ngClass]="{'active':step == 1 }">
             1
         </div>
-        <div class="step">
+        <div class="step" [ngClass]="{'active':step == 2 }">
             2
         </div>
-        <div class="step active">
+        <div class="step" [ngClass]="{'active':step == 3 }">
             3
         </div>
+        <div class="step" [ngClass]="{'active':step == 4 }">
+            4
+        </div>
+        <div class="step" [ngClass]="{'active':step == 5 }">
+            5
+        </div>
     </div>
+    <br>
+    <app-add-data-user (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 1"></app-add-data-user>
 
-    <router-outlet></router-outlet>
+    <app-add-data-contact (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 2"></app-add-data-contact>
+
+    <app-insert-amount [userplan]="userplan" (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 3"></app-insert-amount>
+
+    <app-detail-planuser [userplan]="userplan" (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 4"></app-detail-planuser>
+    <!-- <router-outlet *ngIf="plan"></router-outlet> -->
+    <app-select-accounts-payment [userplan]="userplan" (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 5"></app-select-accounts-payment>
 
 </div>

@@ -33,3 +33,7 @@
 .card-selected {
     border: solid 2px var(--red-l) !important;
 }
+
+.card-plan p {
+    font-size: 14px;
+}

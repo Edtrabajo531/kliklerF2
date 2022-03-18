@@ -8,30 +8,44 @@ import { PlansService } from '../../../services/admin/plans.service';
   templateUrl: './activate-plan.component.html',
   styleUrls: ['./activate-plan.component.css']
 })
+
 export class ActivatePlanComponent implements OnInit {
   plan:Plan;
+  userplan:any;
+  step = 0;
+  loading = true;
   constructor(
     private activatedR:ActivatedRoute,
     private planS:PlansService,
     private router:Router,
-
-
   ) { }
 
   ngOnInit(): void {
-    
-    
     this.activatedR.paramMap.subscribe((params:any)=>{
       let id = params.params.id;
       this.planS.activate_plan(id).subscribe((result:any)=>{
         if(result == 'no-existe'){
           this.router.navigateByUrl('/planes')
         }
-        console.log(result);
-        
-        this.plan = result;
+        this.plan = result.plan;
+        this.userplan = result.userplan;
+        this.step = 5;
       })
     });
   }
 
+  receiveChild(message: any) {
+    if (message == 'showLoader') {
+      this.loading = true;
+    } else if (message == 'hideLoader') {
+      this.loading = false;
+    }
+  }
+
+  receiveStep(value: any) {
+    this.step = value;
+    console.log("RECE");
+    
+  }
+ 
 }

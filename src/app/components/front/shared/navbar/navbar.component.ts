@@ -27,7 +27,6 @@ export class NavbarComponent implements OnInit {
   formResendMail = false;
   accountConfirmed = false;
   errorAccountConfirmed = false;
-
   constructor(
     private modalS: NgbModal,
     config: NgbModalConfig,

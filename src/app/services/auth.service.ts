@@ -109,11 +109,11 @@ export class AuthService {
     return this.http.post(this.ENDPOINT + this.url_verified,"");
   }
 
-  verify_data_document(data:any){
-    return this.http.post(this.ENDPOINT + this.url_verify_data_document, data);
+  updateDataPersonal(data:any){
+    return this.http.post(this.ENDPOINT + "update-data-personal", data);
   }
-  verified_data_contact(data:any){
-    return this.http.post(this.ENDPOINT + this.url_verify_data_contact, data);
+  updateDataContact(data:any){
+    return this.http.post(this.ENDPOINT + "update-data-contact", data);
   }
   // agrega ciudades desde a la bd solo se uso un vez
   add_cities(data:any){

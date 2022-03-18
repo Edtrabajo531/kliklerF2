@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlansService } from 'src/app/services/admin/plans.service';
 import { ToastrService } from 'ngx-toastr';
 import { Plan } from 'src/app/models/plan.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-select-plan',
   templateUrl: './select-plan.component.html',
@@ -13,8 +14,8 @@ export class SelectPlanComponent implements OnInit {
   selectedPlan:Plan;
   constructor(
     private planS:PlansService,
-    private toastrS:ToastrService
-
+    private toastrS:ToastrService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -23,7 +24,7 @@ export class SelectPlanComponent implements OnInit {
   
   listPlans(){
     this.planS.list().subscribe( (data:any) =>{
-      this.plans = data;
+      this.plans = data.list;
     });
   }
 
@@ -32,7 +33,7 @@ export class SelectPlanComponent implements OnInit {
       this.toastrS.warning('Debe seleccionar un plan antes de continuar.')
       return;
     }
-    this.step = 2;
+    this.router.navigateByUrl('/activar-plan/'+this.selectedPlan.id);
     this.toastrS.clear();
   }
 

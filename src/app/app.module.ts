@@ -21,10 +21,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { CreatePlanComponent } from './components/admin/plans/create-plan/create-plan.component';
 import { EditPlanComponent } from './components/admin/plans/edit-plan/edit-plan.component';
 import { SelectPlanComponent } from './components/front/select-plan/select-plan.component';
-import { StepP2Component } from './components/front/select-plan/step-p2/step-p2.component';
-import { ActivePlanComponent } from './components/front/active-plan/active-plan.component';
-import { ActiveP2Component } from './components/front/active-plan/active-p2/active-p2.component';
-import { ActiveP3Component } from './components/front/active-plan/active-p3/active-p3.component';
+
 import { ActivatePlanComponent } from './components/front/activate-plan/activate-plan.component';
 import { BankAccountsComponent } from './components/admin/bank-accounts/bank-accounts.component';
 import { ModalCreateBankComponent } from './components/admin/bank-accounts/modal-create-bank/modal-create-bank.component';
@@ -34,7 +31,13 @@ import { CreateWalletComponent } from './components/admin/wallets/create-wallet/
 import { EditWalletComponent } from './components/admin/wallets/edit-wallet/edit-wallet.component';
 import { FormDatosUsuarioComponent } from './components/form-datos-usuario/form-datos-usuario.component';
 import { EditLisenceComponent } from './components/admin/plans/edit-lisence/edit-lisence.component';
-
+import { AddDataUserComponent } from './components/front/add-data-user/add-data-user.component';
+import { AddDataContactComponent } from './components/front/add-data-user/add-data-contact/add-data-contact.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { InsertAmountComponent } from './components/front/activate-plan/insert-amount/insert-amount.component';
+import { DetailPlanuserComponent } from './components/front/activate-plan/detail-planuser/detail-planuser.component';
+import { ClearComponent } from './components/front/activate-plan/clear/clear.component';
+import { SelectAccountsPaymentComponent } from './components/front/activate-plan/select-accounts-payment/select-accounts-payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,10 +52,6 @@ import { EditLisenceComponent } from './components/admin/plans/edit-lisence/edit
     CreatePlanComponent,
     EditPlanComponent,
     SelectPlanComponent,
-    StepP2Component,
-    ActivePlanComponent,
-    ActiveP2Component,
-    ActiveP3Component,
     ActivatePlanComponent,
     BankAccountsComponent,
     ModalCreateBankComponent,
@@ -61,9 +60,16 @@ import { EditLisenceComponent } from './components/admin/plans/edit-lisence/edit
     CreateWalletComponent,
     EditWalletComponent,
     FormDatosUsuarioComponent,
-    EditLisenceComponent
+    EditLisenceComponent,
+    AddDataUserComponent,
+    AddDataContactComponent,
+    InsertAmountComponent,
+    DetailPlanuserComponent,
+    ClearComponent,
+    SelectAccountsPaymentComponent,
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -71,7 +77,9 @@ import { EditLisenceComponent } from './components/admin/plans/edit-lisence/edit
     BrowserAnimationsModule,
     ToastrModule.forRoot({ maxOpened: 2, closeButton: true, autoDismiss: true, enableHtml: true, timeOut: 6000, positionClass: 'toast-bottom-center' }),
     HttpClientModule,
-    DataTablesModule 
+    DataTablesModule,
+    NgxIntlTelInputModule
+
   ],
   providers: [
     {

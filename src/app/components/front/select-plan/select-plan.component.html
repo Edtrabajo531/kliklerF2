@@ -4,7 +4,6 @@
     <div class="card">
         <div class="card-body p-0">
             <img id="img-girl" src="assets\images\default\chica-dinero.jpg" alt="">
-
             <div id="banner">
                 <img id="img-dollars" src="assets\images\default\monton-de-dolares.jpg" alt="">
                 <div class="row" style="z-index: 5;">
@@ -14,8 +13,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
@@ -33,16 +30,15 @@
                         </div>
                     </div>
                     <div class="card-body bg-danger ">
-                        <p class="m-0 text-white "><span class="font-500 ">Precio:</span> {{plan.cost}} $</p>
-                        <p class="m-0 text-white "><span class="font-500 ">Ganancia:</span> {{plan.profit}} %</p>
-                        <p class="m-0 text-white "><span class="font-500 ">Cobro:</span> + {{ plan.charge_limit }} $</p>
+                        <p class="m-0 text-white "><span class="font-500 ">Precio (mín):</span> {{plan.cost}} $</p>
+                        <p class="m-0 text-white "><span class="font-500 ">Ganancia (mes):</span> {{plan.profit}} %</p>
+
                         <p class="m-0 text-white "><span class="font-500 ">Publicaciones:</span> {{ plan.products }} </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-12">
             <button (click)="goStep2()" type="button" class="btn btn-primary float-end"> Siguiente <i class="fas fa-arrow-right"></i> </button>
@@ -50,9 +46,8 @@
     </div>
     <br>
     <br>
-
 </div>
 
-<app-step-p2 (sendToFather)="receivedChild($event)" [selectedPlan]="selectedPlan" *ngIf="step == 2"></app-step-p2>
+<!-- <app-insert-amount (sendToFather)="receivedChild($event)" [selectedPlan]="selectedPlan" *ngIf="step == 2"></app-insert-amount>
 
-<app-step-p3 (sendToFather)="receivedChild($event)" [selectedPlan]="selectedPlan" *ngIf="step == 3"></app-step-p3>
+<app-step-p2 (sendToFather)="receivedChild($event)" [selectedPlan]="selectedPlan" *ngIf="step == 3"></app-step-p2> -->

@@ -8,17 +8,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ValidatorsService {
   constructor() { }
 
-
-
   float(control: FormControl) {
     if (control?.value) {
       let value = control.value;
-      console.log(value);
-      console.log(value);
-      console.log(value);
-      console.log(value);
-
-      
       var regExp = /^[0-9]+(\,[0-9]{1,20})?$/;
       if (value.match(regExp)) {
         return true;
@@ -88,9 +80,6 @@ export class ValidatorsService {
 
   cityRequired(frm: FormGroup) {
     if (frm.controls['citiesCount'].value != 0) {
-
-
-
       if (frm.controls['city_id'].value == "" || frm.controls['city_id'].value == null) {
         return { 'cityRequired': true };
       }
@@ -167,6 +156,8 @@ export class ValidatorsService {
       return 'Formato de número inválido para este campo.';
     } else if (error?.float) {
       return 'Solo números enteros o decimales (,) para este campo.';
+    } else if (error?.date) {
+      return 'Formato de fecha inválida.';
     } else {
       return error.firstError;
     }

@@ -1,0 +1,24 @@
+<p> <span class="font-600 text-danger">Paso 3:</span> Inserta el monto de inversión para tu plan. </p>
+
+<div class="card">
+    <form [formGroup]="form" *ngIf="form" (ngSubmit)="submit()" autocomplete="off">
+        <div class="card-header" ngbAutofocus>
+            <h5 class="modal-title" id="exampleModalLabel"> Datos Contacto</h5>
+        </div>
+        <div class="card-body">
+
+            <div class=" form-group" style="max-width: 200px;">
+                <label for=" ">Inversión $</label>
+                <input placeholder="Mínimo {{userplan.cost}} $" type="text" formControlName="inversion" class="form-control">
+                <label *ngIf="validate( 'inversion').valid " class="text-danger "> {{validate('inversion').error}} </label>
+            </div>
+
+            <!-- state_id city_id address -->
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary float-end ml-2" type="submit"> Siguiente <i class="fas fa-arrow-right"></i> </button>
+            <button (click)="sendToFather('showLoader');sendToFatherStep(2)" class="btn btn-secondary float-end" type="button"> <i class="fas fa-arrow-left"></i> Atrás </button>
+        </div>
+        <!-- Submit Form Button Ends -->
+    </form>
+</div>

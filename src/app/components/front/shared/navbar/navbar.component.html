@@ -21,11 +21,11 @@
                             <li><a (click)="logout()" class="dropdown-item">Cerrar sesión</a></li>
                         </div>
                         <div *ngIf="userAuth.role == 'administrador' || userAuth.role == 'administrador-p'">
-                            <li>
+                            <!-- <li>
                                 <p class=" m-0 mt-2 text-secondary text-center">ADMINISTRAR</p>
-                            </li>
+                            </li> -->
 
-                            <li><a routerLink="/administrar/planes" class="dropdown-item">Planes</a></li>
+                            <li><a routerLink="/administrar/planes" class="dropdown-item">Administración</a></li>
                             <li><a (click)="logout()" class="dropdown-item">Cerrar sesión</a></li>
                         </div>
 

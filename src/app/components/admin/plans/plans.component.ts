@@ -108,26 +108,26 @@ export class PlansComponent implements OnInit {
           orderable: true,
         },
         {
-          title: 'Costo',
+          title: 'Mínimo',
           data:null,
           render: (data, type, full) => {
             return data.cost+" $";
           }
         },
         {
-          title: "Ganancia",
+          title: "Ganancia (mes)",
           data: null,
           render: (data, type, full) => {
             return data.profit+" %";
           }
         },
-        {
-          title: "Total Ganancia",
-          data: null,
-          render: (data, type, full) => {
-            return data.total_profit+" $";
-          }
-        },
+        // {
+        //   title: "Total Ganancia",
+        //   data: null,
+        //   render: (data, type, full) => {
+        //     return data.total_profit+" $";
+        //   }
+        // },
        
         {
           title: "Duración",
@@ -141,13 +141,13 @@ export class PlansComponent implements OnInit {
             }
           }
         },
-        {
-          title: "Limite de cobro",
-          data: null,
-          render: (data, type, full) => {
-            return data.charge_limit+" $";
-          }
-        },
+        // {
+        //   title: "Limite de cobro",
+        //   data: null,
+        //   render: (data, type, full) => {
+        //     return data.charge_limit+" $";
+        //   }
+        // },
         {
           title: "Limite Prod.",
           data: 'products',

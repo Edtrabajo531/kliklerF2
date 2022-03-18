@@ -5,24 +5,21 @@
     </div>
     <div class="modal-body">
         <div class="row">
-
             <!-- Input Field Starts -->
             <div class="form-group col-md-6  ">
                 <label for="">Nombre</label>
                 <input maxlength="20" formControlName="name" class="form-control" name="alias" placeholder="" type="text" />
                 <label *ngIf="validate('name').valid " class="text-danger "> {{validate('name').error }} </label>
             </div>
-
             <!-- Input Field Starts -->
             <div class="form-group col-md-6 ">
                 <label for="">Valor mínimo</label>
                 <input maxlength="15" formControlName="cost" class="form-control" placeholder="" type="text" />
                 <label *ngIf="validate('cost').valid " class="text-danger "> {{validate('cost').error }} </label>
             </div>
-
             <div class="form-group col-md-6 ">
                 <label for="">Ganancia (%) mensual</label>
-                <input maxlength="3" formControlName="profit" class="form-control" type="text" />
+                <input formControlName="profit" class="form-control" type="text" />
                 <label *ngIf="validate('profit').valid " class="text-danger "> {{validate('profit').error }} </label>
             </div>
             <div class="form-group col-md-6 ">

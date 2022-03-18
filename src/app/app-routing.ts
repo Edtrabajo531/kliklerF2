@@ -7,7 +7,10 @@ import { SelectPlanComponent } from './components/front/select-plan/select-plan.
 import { ActivatePlanComponent } from './components/front/activate-plan/activate-plan.component';
 import { BankAccountsComponent } from './components/admin/bank-accounts/bank-accounts.component';
 import { WalletsComponent } from './components/admin/wallets/wallets.component';
-import { ActivePlanComponent } from './components/front/active-plan/active-plan.component';
+import { AddDataUserComponent } from './components/front/add-data-user/add-data-user.component';
+import { AddDataContactComponent } from './components/front/add-data-user/add-data-contact/add-data-contact.component';
+import { InsertAmountComponent } from './components/front/activate-plan/insert-amount/insert-amount.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -15,10 +18,14 @@ const routes: Routes = [
  
   {
     path: 'activar-plan/:id',
-    component: ActivePlanComponent,
-    children: [
-      { path: 'datos-usuario', component: HomeComponent },
-    ]
+    component: ActivatePlanComponent,
+    // children: [
+    //   { path: 'datos-personales', component: AddDataUserComponent },
+    //   { path: 'datos-contacto', component: AddDataContactComponent },
+    //   { path: 'insertar-monto', component: InsertAmountComponent },
+      
+    //   // { path: 'insert-usuario', component: HomeComponent },
+    // ]
   },
   {
     path: 'administrar',

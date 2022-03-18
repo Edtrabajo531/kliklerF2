@@ -1,0 +1,51 @@
+<p> <span class="font-600 text-danger">Paso 4:</span> Verifica los detalles del plan. </p>
+<div class="card">
+    <div class="card-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Datos del Plan</h5>
+    </div>
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-4">
+                <label for="">Nombre:</label>
+                <p>{{userplan.name}}</p>
+            </div>
+            <div class="col-4">
+                <label for="">Inversion:</label>
+                <p>{{userplan.inversion}} $</p>
+            </div>
+            <div class="col-4">
+                <label for="">Ganancias al mes %:</label>
+                <p>{{userplan.profit}} %</p>
+            </div>
+            <div class="col-4">
+                <label for="">Ganancias al mes $:</label>
+                <p>{{userplan.minimum_charge}} $</p>
+            </div>
+            <div class="col-4">
+                <label for="">Mínimo de retiro:</label>
+                <p>{{userplan.minimum_charge}} $</p>
+            </div>
+            <div class="col-4">
+                <label for="">Duración:</label>
+                <p>{{userplan.duration}} <span *ngIf="userplan.duration == 1">mes</span> <span *ngIf="userplan.duration > 1">meses</span></p>
+            </div>
+            <div class="col-4">
+                <label for="">Publicación productos:</label>
+                <p>{{userplan.products}}</p>
+            </div>
+            <div class="col-4">
+                <label for="">Total ganancias:</label>
+                <p>{{userplan.total_profit}} $</p>
+            </div>
+            <div class="col-4">
+                <label for="">Finaliza </label>
+                <p>{{userplan.date_end | date:"dd-MM-YYYY HH:mm:ss"}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button (click)="sendToFatherStep(3)" class="btn btn-primary float-end ml-2" type="button"> Siguiente <i class="fas fa-arrow-right"></i> </button>
+        <button (click)="sendToFatherStep(3)" class="btn btn-secondary float-end" type="button"> <i class="fas fa-arrow-left"></i>x Atrás </button>
+    </div>
+</div>

@@ -12,7 +12,6 @@ import { PlansService } from '../../../../services/admin/plans.service';
 })
 
 export class EditLisenceComponent implements OnInit {
-
   @Input() data: any;
   form: FormGroup;
   bank:any;
@@ -37,19 +36,15 @@ export class EditLisenceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("LISENCE");
-    
     this.formR();
   }
 
   formR() {
     this.form = this.formBuilder.group(
       {
-        cost: [this.data.cost, [Validators.required,Validators.max(999999999999) ,this.validatorsS.float]],
+        cost: [this.data, [Validators.required,Validators.max(999999999999) ,this.validatorsS.float]],
       },
-
     );
-
     this.sendToFather('hideLoader');
   }
 
@@ -62,7 +57,7 @@ export class EditLisenceComponent implements OnInit {
       return;
     }
 
-    this.planS.update(this.form.value).subscribe(
+    this.planS.updateLicense(this.form.value).subscribe(
       (response: any) => {
         this.sendToFather('hideLoader');
         let detect_errors_server = this.validatorsS.detect_errors_server(response,this.form);

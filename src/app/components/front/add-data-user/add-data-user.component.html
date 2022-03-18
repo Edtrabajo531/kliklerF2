@@ -1,0 +1,46 @@
+<br>
+<p> <span class="font-600 text-danger">Paso 1:</span> Completa tus datos personales. </p>
+
+<div class="card">
+    <form [formGroup]="form" *ngIf="form" (ngSubmit)="submit()" autocomplete="off">
+        <div class="card-header" ngbAutofocus>
+            <h5 class="modal-title" id="exampleModalLabel"> Datos Personales</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 form-group">
+                    <label for=" ">Nombre completo:</label>
+                    <input formControlName="name" class="form-control" type="text" />
+                    <label *ngIf="validate('name').valid " class="text-danger "> {{validate('name').error }} </label>
+                </div>
+                <div class="col-md-3 col-sm-6 form-group">
+                    <label for=" ">Fecha de Nacimiento:</label>
+                    <input formControlName="date_of_birth" placeholder="" ngbAutofocus type="date" class="form-control">
+                    <label *ngIf="validate('date_of_birth').valid " class="text-danger "> {{validate('date_of_birth').error }} </label>
+                </div>
+                <div class="form-group col-md-3 col-sm-6">
+                    <label for=" ">Tipo de documento:</label>
+                    <select formControlName="document_type" ngbAutofocus id="" class="form-control">
+                      <option value="D.N.I.">D.N.I.</option>
+                      <option value="Licencia de conducir">Licencia de conducir</option>
+                      <option value="Pasaporte">Pasaporte</option>
+                      <option value="Visa o residencia permanente">Visa o residencia permanente</option>
+                    </select>
+                    <label *ngIf="validate('document_type').valid " class="text-danger "> {{validate('document_type').error }} </label>
+                </div>
+                <div class="form-group col-md-3 col-sm-6">
+                    <label for=" ">Número de documento:</label>
+                    <input type="text" min="0" max="99999999999999" ngbAutofocus formControlName="document_number" class="form-control">
+                    <label *ngIf="validate('document_number').valid " class="text-danger "> {{validate('document_number').error }} </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <button class="btn btn-primary float-end ml-2" type="submit"> Siguiente <i class="fas fa-arrow-right"></i> </button>
+            <button class="btn btn-secondary float-end" type="button" routerLink="/planes"> Planes </button>
+        </div>
+
+        <!-- Submit Form Button Ends -->
+    </form>
+</div>

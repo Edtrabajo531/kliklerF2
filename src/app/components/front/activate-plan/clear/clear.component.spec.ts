@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActiveP3Component } from './active-p3.component';
+import { ClearComponent } from './clear.component';
 
-describe('ActiveP3Component', () => {
-  let component: ActiveP3Component;
-  let fixture: ComponentFixture<ActiveP3Component>;
+describe('ClearComponent', () => {
+  let component: ClearComponent;
+  let fixture: ComponentFixture<ClearComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ActiveP3Component ]
+      declarations: [ ClearComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ActiveP3Component);
+    fixture = TestBed.createComponent(ClearComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
