@@ -1,55 +1,56 @@
-<br>
-<p> <span class="font-600 text-danger">Paso 2:</span> Completa tus datos de contacto. </p>
-<div class="card">
-    <form [formGroup]="form" *ngIf="form" (ngSubmit)="submit()" autocomplete="off">
-        <div class="card-header" ngbAutofocus>
-            <h5 class="modal-title" id="exampleModalLabel"> Datos Contacto</h5>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-3 col-sm-6 form-group">
-                    <label for=" ">Teléfono 1 <span class="text-danger">*</span> </label>
-                    <ngx-intl-tel-input maxlength="30" [onlyCountries]="onlyCountries" [cssClass]="'form-control'" [enableAutoCountrySelect]="true" [enablePlaceholder]="false" [searchCountryFlag]="false" [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.Ecuador"
-                        maxLength="15" [phoneValidation]="true" [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" formControlName="phone">
-                    </ngx-intl-tel-input>
-                    <label *ngIf="validate('phone').valid" class="text-danger "> {{validate('phone').error}} </label>
-                </div>
-                <div class="col-md-3 col-sm-6 form-group">
-                    <label for=" ">Teléfono 2</label>
-                    <ngx-intl-tel-input maxlength="30" [onlyCountries]="onlyCountries" [cssClass]="'form-control'" [enableAutoCountrySelect]="true" [enablePlaceholder]="false" [searchCountryFlag]="false" [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.Ecuador"
-                        maxLength="15" [phoneValidation]="true" [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" formControlName="phone2">
-                    </ngx-intl-tel-input>
-                    <label *ngIf="validate('phone2').valid" class="text-danger "> {{validate('phone2').error}} </label>
-                </div>
-                <div class="form-group col-md-3 col-sm-6">
-                    <label for=" ">Provincia <span class="text-danger">*</span> </label>
-                    <select (change)="filterCities($event)" formControlName="state_id" class="form-control">
+<div class="fadeIn">
+
+    <div class="card fadeIn" *ngIf="form">
+        <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="off">
+            <div class="card-header" ngbAutofocus>
+                <h5 class="modal-title" id="exampleModalLabel"> Datos Contacto</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for=" ">Teléfono 1 <span class="text-danger">*</span> </label>
+                        <ngx-intl-tel-input maxlength="30" [onlyCountries]="onlyCountries" [cssClass]="'form-control'" [enableAutoCountrySelect]="true" [enablePlaceholder]="false" [searchCountryFlag]="false" [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.Ecuador"
+                            maxLength="15" [phoneValidation]="true" [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" formControlName="phone">
+                        </ngx-intl-tel-input>
+                        <label *ngIf="validate('phone').valid" class="text-danger "> {{validate('phone').error}} </label>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for=" ">Teléfono 2</label>
+                        <ngx-intl-tel-input maxlength="30" [onlyCountries]="onlyCountries" [cssClass]="'form-control'" [enableAutoCountrySelect]="true" [enablePlaceholder]="false" [searchCountryFlag]="false" [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.Ecuador"
+                            maxLength="15" [phoneValidation]="true" [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" formControlName="phone2">
+                        </ngx-intl-tel-input>
+                        <label *ngIf="validate('phone2').valid" class="text-danger "> {{validate('phone2').error}} </label>
+                    </div>
+                    <div class="form-group col-md-3 col-sm-6">
+                        <label for=" ">Provincia <span class="text-danger">*</span> </label>
+                        <select (change)="filterCities($event)" formControlName="state_id" class="form-control">
                         <option value="" style="color:grey !important"></option>
                       <option  *ngFor="let state of states" value="{{state.id}}">{{state.name}}</option>
                     </select>
-                    <label *ngIf="validate('state_id').valid " class="text-danger "> {{validate('state_id').error}} </label>
-                </div>
-                <div class="form-group col-md-3 col-sm-6" *ngIf="this.citiesFilter.length != 0">
-                    <label for=" ">Canton <span class="text-danger">*</span> </label>
-                    <select formControlName="city_id" class="form-control">
+                        <label *ngIf="validate('state_id').valid " class="text-danger "> {{validate('state_id').error}} </label>
+                    </div>
+                    <div class="form-group col-md-3 col-sm-6" *ngIf="this.citiesFilter.length != 0">
+                        <label for=" ">Canton <span class="text-danger">*</span> </label>
+                        <select formControlName="city_id" class="form-control">
                       <option value="" style="color:grey !important"></option>
                       <option *ngFor="let city of citiesFilter" value="{{city.id}}">{{city.name}}</option>
                     </select>
-                    <label *ngIf="validate('city_id').valid " class="text-danger "> {{validate('city_id').error}} </label>
-                    <label class="text-danger" *ngIf="form.hasError('cityRequired')">
+                        <label *ngIf="validate('city_id').valid " class="text-danger "> {{validate('city_id').error}} </label>
+                        <label class="text-danger" *ngIf="form.hasError('cityRequired')">
                       Este campo es requerido
                     </label>
-                </div>
-                <div class=" form-group col-md-12 ">
-                    <label for=" ">Dirección</label>
-                    <input type="text" formControlName="address" class="form-control">
-                    <label *ngIf="validate( 'address').valid " class="text-danger "> {{validate('address').error}} </label>
+                    </div>
+                    <div class=" form-group col-md-12 ">
+                        <label for=" ">Dirección</label>
+                        <input type="text" formControlName="address" class="form-control">
+                        <label *ngIf="validate( 'address').valid " class="text-danger "> {{validate('address').error}} </label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card-footer">
-            <button class="btn btn-primary float-end ml-2" type="submit"> Siguiente <i class="fas fa-arrow-right"></i> </button>
-            <button (click)="sendToFatherStep(1)" class="btn btn-secondary float-end" type="button"> <i class="fas fa-arrow-left"></i> Atrás </button>
-        </div>
-    </form>
+            <div class="card-footer">
+                <button class="btn btn-primary float-end ml-2" type="submit"> Siguiente <i class="fas fa-arrow-right"></i> </button>
+                <button (click)="sendToFather('showLoader');sendToFatherStep(1)" class="btn btn-secondary float-end" type="button"> <i class="fas fa-arrow-left"></i> Atrás </button>
+            </div>
+        </form>
+    </div>
 </div>

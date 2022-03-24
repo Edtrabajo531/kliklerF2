@@ -1,24 +1,29 @@
-<p> <span class="font-600 text-danger">Paso 3:</span> Inserta el monto de inversión para tu plan. </p>
+<div class="fadeIn">
+    <div class="card fadeIn" *ngIf="form">
+        <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="off">
+            <div class="card-header" ngbAutofocus>
+                <h5 class="modal-title" id="exampleModalLabel"> Monto de inversión</h5>
+            </div>
+            <div class="card-body">
+                <div class=" form-group" style="max-width: 200px;">
+                    <label for=" ">Inversión $</label>
+                    <input placeholder="Mínimo {{userplan?.cost.toString().replace('.',',')}} $" type="text" formControlName="inversion" class="form-control">
+                    <label *ngIf="validate( 'inversion').valid " class="text-danger "> {{validate('inversion').error}} </label>
+                    <label class="text-danger" *ngIf="form.hasError('minFloat')">
+                    El valor mínimo para este campo debe ser: {{userplan.cost.toString().replace('.',',')}}
+                </label>
+                </div>
 
-<div class="card">
-    <form [formGroup]="form" *ngIf="form" (ngSubmit)="submit()" autocomplete="off">
-        <div class="card-header" ngbAutofocus>
-            <h5 class="modal-title" id="exampleModalLabel"> Datos Contacto</h5>
-        </div>
-        <div class="card-body">
-
-            <div class=" form-group" style="max-width: 200px;">
-                <label for=" ">Inversión $</label>
-                <input placeholder="Mínimo {{userplan.cost}} $" type="text" formControlName="inversion" class="form-control">
-                <label *ngIf="validate( 'inversion').valid " class="text-danger "> {{validate('inversion').error}} </label>
+                <!-- state_id city_id address -->
             </div>
 
-            <!-- state_id city_id address -->
-        </div>
-        <div class="card-footer">
-            <button class="btn btn-primary float-end ml-2" type="submit"> Siguiente <i class="fas fa-arrow-right"></i> </button>
-            <button (click)="sendToFather('showLoader');sendToFatherStep(2)" class="btn btn-secondary float-end" type="button"> <i class="fas fa-arrow-left"></i> Atrás </button>
-        </div>
-        <!-- Submit Form Button Ends -->
-    </form>
+
+            <div class="card-footer">
+                <button class="btn btn-primary float-end ml-2" type="submit"> Siguiente <i class="fas fa-arrow-right"></i> </button>
+                <button *ngIf="stepsCant == 4" routerLink="/planes" class="btn btn-secondary float-end" type="button"> Planes </button>
+                <button *ngIf="stepsCant == 6" (click)="sendToFather('showLoader');sendToFatherStep(2)" class="btn btn-secondary float-end" type="button"> <i class="fas fa-arrow-left"></i> Atrás </button>
+            </div>
+            <!-- Submit Form Button Ends -->
+        </form>
+    </div>
 </div>

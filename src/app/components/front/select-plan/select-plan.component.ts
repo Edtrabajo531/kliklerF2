@@ -12,6 +12,8 @@ export class SelectPlanComponent implements OnInit {
   step = 1;
   plans:any;
   selectedPlan:Plan;
+  lisence:any;
+  loading = true;
   constructor(
     private planS:PlansService,
     private toastrS:ToastrService,
@@ -24,7 +26,13 @@ export class SelectPlanComponent implements OnInit {
   
   listPlans(){
     this.planS.list().subscribe( (data:any) =>{
+     if(data.planReview?.id){
+       this.router.navigateByUrl('/plan-en-revision');
+     }
+     
+      this.lisence = data.license;
       this.plans = data.list;
+      this.loading = false;
     });
   }
 

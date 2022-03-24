@@ -24,6 +24,7 @@ import { UserplanService } from '../../../../services/front/userplan.service';
 
 export class InsertAmountComponent implements OnInit {
   @Input() userplan:any;
+  @Input() stepsCant:any;
   form: FormGroup;
   bank: any;
   PasswordsEqual = true;
@@ -47,7 +48,7 @@ export class InsertAmountComponent implements OnInit {
   ngOnInit(): void {
     
     this.userplanS.get(this.userplan?.id).subscribe( (data:any)=>{
-      this.userplan = data;
+      this.userplan = data.userplan;
       this.formR();
     });
   }
@@ -61,13 +62,12 @@ export class InsertAmountComponent implements OnInit {
   }
 
   formR() {
-    console.log(this.userplan);
-    
     this.form = this.formBuilder.group(
       {
-        id:[this.userplan.id],
-        inversion: [this.userplan.inversion, [Validators.required,Validators.max(999999999999) ,this.validatorsS.float,Validators.min(this.userplan.cost) ]],
-      });
+        id:[this.userplan?.id],
+        minimun:[this.userplan?.cost],
+        inversion: [this.userplan?.inversion?.toString().replace('.',','), [Validators.required,Validators.max(999999999999) ,this.validatorsS.float ]],
+      },{ validator: this.validatorsS.minFloat });
     this.sendToFather('hideLoader');
   }
 

@@ -42,7 +42,7 @@ export class EditLisenceComponent implements OnInit {
   formR() {
     this.form = this.formBuilder.group(
       {
-        cost: [this.data, [Validators.required,Validators.max(999999999999) ,this.validatorsS.float]],
+        cost: [this.data.toString().replace('.',','), [Validators.required,Validators.max(999999999999) ,this.validatorsS.float]],
       },
     );
     this.sendToFather('hideLoader');

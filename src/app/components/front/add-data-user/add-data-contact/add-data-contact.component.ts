@@ -62,7 +62,10 @@ export class AddDataContactComponent implements OnInit {
       this.user = data.user;
       this.states = data.states;
       this.cities = data.cities;
-      this.filterCities(data.user.city_id);
+      this.filterCities(data.user.state_id);
+     console.log(data);
+     
+      
       this.formR();
     });
   }
@@ -76,6 +79,7 @@ export class AddDataContactComponent implements OnInit {
   }
 
   filterCities(event: any) {
+   
     let id: any;
     if (event?.target) {
       id = event.target.value;
@@ -90,9 +94,13 @@ export class AddDataContactComponent implements OnInit {
       this.form.controls['citiesCount'].setValue(this.cities.length);
     } else {
       id = event;
+     
+      
       this.citiesFilter = this.cities.filter(
         (city: any) => city.state_id == id
       );
+      console.log(this.citiesFilter);
+      
     }
   }
 

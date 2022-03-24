@@ -1,4 +1,4 @@
-<div class="navbar-p">
+<div class="navbar-p mb-5">
     <div class="container">
         <div class="section-1">
             <div class="content-center">
@@ -10,6 +10,9 @@
         </div>
         <div class="section-3">
             <div class="content-center" *ngIf="userAuth?.id">
+                <a routerLink="/saldo" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-dollar"></i> Saldo
+                </a>
                 <div class="dropdown">
                     <a class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user"></i> {{ userAuth.alias }}
@@ -17,14 +20,11 @@
                     <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
                         <div *ngIf="userAuth.role == 'cliente'">
                             <li><a class="dropdown-item">Perfil</a></li>
+                            <li><a routerLink="/mi-plan" class="dropdown-item">Mi Plan </a></li>
                             <li><a routerLink="/planes" class="dropdown-item">Planes</a></li>
                             <li><a (click)="logout()" class="dropdown-item">Cerrar sesión</a></li>
                         </div>
                         <div *ngIf="userAuth.role == 'administrador' || userAuth.role == 'administrador-p'">
-                            <!-- <li>
-                                <p class=" m-0 mt-2 text-secondary text-center">ADMINISTRAR</p>
-                            </li> -->
-
                             <li><a routerLink="/administrar/planes" class="dropdown-item">Administración</a></li>
                             <li><a (click)="logout()" class="dropdown-item">Cerrar sesión</a></li>
                         </div>

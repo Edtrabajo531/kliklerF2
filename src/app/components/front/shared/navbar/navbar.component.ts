@@ -68,9 +68,7 @@ export class NavbarComponent implements OnInit {
     })
     this.userAuth = this.authS.getAuth();
     this.loading = false;
-    if(this.userAuth?.id){
-      this.getAuth();
-    }
+   
   }
   
   getAuth(){

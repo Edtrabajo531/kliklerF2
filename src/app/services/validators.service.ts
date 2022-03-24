@@ -22,6 +22,19 @@ export class ValidatorsService {
       only_letters_numbers_underscore: true,
     };
   }
+
+  minFloat(frm: FormGroup) {
+    if(frm.controls['inversion'].value != null && frm.controls['inversion'].value.length != 0 && frm.controls['inversion'].touched == true){
+      let inversion = frm.controls['inversion'].value.replace(',','.');
+      if (inversion.replace(',','.') < frm.controls['minimun'].value) {
+        return { 'minFloat': true };
+      } else {
+        return;
+      }
+    }
+
+  }
+
   only_letters_numbers_underscore(control: FormControl) {
     if (control?.value) {
       let value = control.value;

@@ -44,8 +44,8 @@ export class EditPlanComponent implements OnInit {
       {
         id: [this.data.id, [Validators.required]],
         name: [this.data.name, [Validators.required]],
-        cost: [this.data.cost, [Validators.required,Validators.max(999999999999) ,this.validatorsS.float]],
-        profit: [this.data.profit, [Validators.required, Validators.max(100),this.validatorsS.float]],
+        cost: [this.data.cost.toString().replace('.',','), [Validators.required,Validators.max(999999999999) ,this.validatorsS.float]],
+        profit: [this.data.profit.toString().replace('.',','), [Validators.required, Validators.max(100),this.validatorsS.float]],
         duration: [this.data.duration, [Validators.required, this.validatorsS.number,Validators.min(1)]],
         // charge_limit: ['', [Validators.required, Validators.max(999999999999),this.validatorsS.float]],
         products: [this.data.products, [Validators.required, this.validatorsS.number,Validators.min(1)]],

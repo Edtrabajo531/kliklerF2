@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<app-loader *ngIf="loading"></app-loader>
+<div class="container text-center">
+    <h2 class="title">plan activo </h2>
+    <br>
+    <h4>Tu plan activo es el plan: "{{userplan?.name}}".</h4>
+    <br>
+    <h6 *ngIf="userplan?.profit == 0">El plan "{{userplan?.name}}" no ofrece benecios de ganancia, sin embargo te permite publicar hasta <span class="font-600">{{userplan?.products}}</span> productos. </h6>
+
+    <div class="row" *ngIf="userplan?.profit > 0">
+        <div class="col-4 m-auto mb-5">
+            <h6 class="text-secondary">Nombre</h6>
+            <h4>{{ userplan.name }}</h4>
+        </div>
+        <div class="col-4 m-auto mb-5">
+            <h6 class="text-secondary">Inversion</h6>
+            <h4>{{ userplan.inversion }} $</h4>
+        </div>
+        <div class="col-4 m-auto mb-5">
+            <h6 class="text-secondary">Ganancias al mes %</h6>
+            <h4>{{ userplan.profit }} %</h4>
+        </div>
+        <div class="col-4 m-auto mb-5">
+            <h6 class="text-secondary">Ganancias al mes $</h6>
+            <h4>{{ userplan.minimum_charge }} $</h4>
+        </div>
+        <div class="col-4 m-auto mb-5">
+            <h6 class="text-secondary">Mínimo de retiro</h6>
+            <h4>{{ userplan.minimum_charge }} $</h4>
+        </div>
+        <div class="col-4 m-auto mb-5">
+            <h6 class="text-secondary">Duración</h6>
+            <h4>
+                {{ userplan.duration }} <span *ngIf="userplan.duration == 1">mes</span>
+                <span *ngIf="userplan.duration > 1">meses</span>
+            </h4>
+        </div>
+        <div class="col-4 m-auto mb-5">
+            <h6 class="text-secondary">Publicación productos</h6>
+            <h4>{{ userplan.products }}</h4>
+        </div>
+        <div class="col-4 m-auto mb-5">
+            <h6 class="text-secondary">Total ganancias</h6>
+            <h4>{{ userplan.total_profit }} $</h4>
+        </div>
+        <div class="col-4 m-auto mb-5">
+            <h6 class="text-secondary">Fecha Inicio</h6>
+            <h5>{{ userplan.date_activated | date:'dd-MM-YYYY HH:mm:ss' }} </h5>
+        </div>
+        <div class="col-4 m-auto mb-5">
+            <h6 class="text-secondary">Fecha Expiración</h6>
+            <h5>{{ userplan.date_activated | date:'dd-MM-YYYY HH:mm:ss' }} </h5>
+        </div>
+        <div class="col-4 m-auto mb-5">
+            <h6 class="text-secondary">Retiro de Inversión</h6>
+            <h5>{{ userplan.date_activated | date:'dd-MM-YYYY HH:mm:ss' }} </h5>
+        </div>
+    </div>
+
+</div>

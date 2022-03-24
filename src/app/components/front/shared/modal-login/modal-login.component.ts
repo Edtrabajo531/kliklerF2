@@ -78,7 +78,14 @@ export class ModalLoginComponent implements OnInit {
         }
         if (response?.token) {
           this.authS.saveAuth(response);
+         if(response.role == 'administrador-p' || response.role == 'administrador'){
+          this.sendToFather("hideModal")
+           this.router.navigateByUrl('/admin');
+         }else{
+          
           window.location.reload();
+         }
+         
           // this.toastrS.success('Bienvenido: '+response.alias);
           return;
         }

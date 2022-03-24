@@ -14,14 +14,12 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
 import { LoaderComponent } from './components/front/shared/loader/loader.component';
 import { ModalResendMailConfirmComponent } from './components/front/shared/modal-resend-mail-confirm/modal-resend-mail-confirm.component';
-
 import { AdminComponent } from './components/admin/admin.component';
 import { PlansComponent } from './components/admin/plans/plans.component';
 import { DataTablesModule } from 'angular-datatables';
 import { CreatePlanComponent } from './components/admin/plans/create-plan/create-plan.component';
 import { EditPlanComponent } from './components/admin/plans/edit-plan/edit-plan.component';
 import { SelectPlanComponent } from './components/front/select-plan/select-plan.component';
-
 import { ActivatePlanComponent } from './components/front/activate-plan/activate-plan.component';
 import { BankAccountsComponent } from './components/admin/bank-accounts/bank-accounts.component';
 import { ModalCreateBankComponent } from './components/admin/bank-accounts/modal-create-bank/modal-create-bank.component';
@@ -36,8 +34,17 @@ import { AddDataContactComponent } from './components/front/add-data-user/add-da
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { InsertAmountComponent } from './components/front/activate-plan/insert-amount/insert-amount.component';
 import { DetailPlanuserComponent } from './components/front/activate-plan/detail-planuser/detail-planuser.component';
-import { ClearComponent } from './components/front/activate-plan/clear/clear.component';
 import { SelectAccountsPaymentComponent } from './components/front/activate-plan/select-accounts-payment/select-accounts-payment.component';
+import { UploadsDocumentsComponent } from './components/front/activate-plan/uploads-documents/uploads-documents.component';
+import { DropFileDirective } from './directives/drop-file.directive';
+import { LightboxModule } from 'ngx-lightbox';
+import { FooterComponent } from './components/front/shared/footer/footer.component';
+import { PlanReviewComponent } from './components/front/shared/plan-review/plan-review.component';
+import { UserplanComponent } from './components/admin/userplan/userplan.component';
+import { CheckplanComponent } from './components/admin/userplan/checkplan/checkplan.component';
+import { MyPlanComponent } from './components/front/my-plan/my-plan.component';
+import { SaldoComponent } from './components/front/saldo/saldo.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,11 +72,17 @@ import { SelectAccountsPaymentComponent } from './components/front/activate-plan
     AddDataContactComponent,
     InsertAmountComponent,
     DetailPlanuserComponent,
-    ClearComponent,
     SelectAccountsPaymentComponent,
+    UploadsDocumentsComponent,
+    DropFileDirective,
+    FooterComponent,
+    PlanReviewComponent,
+    UserplanComponent,
+    CheckplanComponent,
+    MyPlanComponent,
+    SaldoComponent
   ],
   imports: [
-    
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -78,8 +91,8 @@ import { SelectAccountsPaymentComponent } from './components/front/activate-plan
     ToastrModule.forRoot({ maxOpened: 2, closeButton: true, autoDismiss: true, enableHtml: true, timeOut: 6000, positionClass: 'toast-bottom-center' }),
     HttpClientModule,
     DataTablesModule,
-    NgxIntlTelInputModule
-
+    NgxIntlTelInputModule,
+    LightboxModule
   ],
   providers: [
     {

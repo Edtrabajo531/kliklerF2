@@ -22,10 +22,14 @@ import { UserplanService } from '../../../../services/front/userplan.service';
 export class SelectAccountsPaymentComponent implements OnInit {
   @Input() userplan:any;
   form: FormGroup;
-  bank: any;
+  banks: any;
+  wallets: any;
   PasswordsEqual = true;
   confirmed = false;
   user: User;
+  selectedBank:any;
+  selectedWallet:any;
+
   @Input() plan_id: any;
   @Output() sendToF = new EventEmitter<any>();
   @Output() sendToFstep = new EventEmitter<any>();
@@ -40,7 +44,9 @@ export class SelectAccountsPaymentComponent implements OnInit {
   ngOnInit(): void {
     
     this.userplanS.get(this.userplan?.id).subscribe( (data:any)=>{
-      this.userplan = data;
+      this.userplan = data.userplan;
+      this.banks = data.banks;
+      this.wallets = data.wallets;
       this.formR();
     });
   }
@@ -53,11 +59,27 @@ export class SelectAccountsPaymentComponent implements OnInit {
     this.sendToFstep.emit(value);
   }
 
+  showSelectedBank(event:any){
+    let value = event.target.value;
+    this.selectedBank = this.banks.filter(
+      (bank: any) => bank.id == value
+    );
+  }
+
+  showSelectedBtc(event:any){
+    let value = event.target.value;
+    this.selectedWallet = this.wallets.filter(
+      (wallet: any) => wallet.id == value
+    );
+  }
+
   formR() {
     this.form = this.formBuilder.group(
       {
         id:[this.userplan.id],
-        inversion: [this.userplan.inversion, [Validators.required,Validators.max(999999999999) ,this.validatorsS.float,Validators.min(this.userplan.cost) ]],
+        bank_id: [this.userplan?.bank_id, [Validators.required ]],
+        wallet_id: [this.userplan?.bank_id, [Validators.required ]],
+        
       });
     this.sendToFather('hideLoader');
   }
@@ -71,7 +93,7 @@ export class SelectAccountsPaymentComponent implements OnInit {
       return;
     }
 
-    this.userplanS.insertAmount(this.form.value).subscribe(
+    this.userplanS.insertAccountsPayment(this.form.value).subscribe(
       (response: any) => {
         let detect_errors_server = this.validatorsS.detect_errors_server(
           response,
@@ -81,7 +103,7 @@ export class SelectAccountsPaymentComponent implements OnInit {
           this.sendToFather('hideLoader');
           return;
         }
-        this.sendToFatherStep(4);
+        this.sendToFatherStep(6);
       },
       (error) => {
         console.log(error);

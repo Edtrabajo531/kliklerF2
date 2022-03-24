@@ -1,37 +1,31 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal, ModalDismissReasons, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { DataTableDirective } from 'angular-datatables';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
-import { PlansService } from '../../../services/admin/plans.service';
+import { UserplanService } from '../../../services/front/userplan.service';
 
 @Component({
-  selector: 'app-plans',
-  templateUrl: './plans.component.html',
-  styleUrls: ['./plans.component.css']
+  selector: 'app-userplan',
+  templateUrl: './userplan.component.html',
+  styleUrls: ['./userplan.component.css']
 })
 
-export class PlansComponent implements OnInit {
-  @ViewChild('modalCreate') modalCreate: ElementRef;
-  @ViewChild('modalEdit') modalEdit: ElementRef;
-  @ViewChild('modalDelete') modalDelete: ElementRef;
-  @ViewChild('modalLicense') modalLicense: ElementRef;
-
+export class UserplanComponent implements OnInit {
+  @ViewChild('modalCheck') modalCheck: ElementRef;
   @ViewChild(DataTableDirective, { static: false })
   datatableElement: DataTableDirective;
   dtOptions: DataTables.Settings = {};
   loading = true;
   dtTrigger: Subject<any> = new Subject<any>();
-  formCreate = false;
-  formEdit = false;
+  formCheck = false;
+  plan_id:any;
   dataEdit = [];
-  
-  formLicense:any;
-  license:any;
+  @ViewChild('input_status') input_status: ElementRef;
   constructor(
-    private planS: PlansService,
+    private userplanS: UserplanService,
     private router: Router,
     private modalS: NgbModal,
     config: NgbModalConfig,
@@ -43,7 +37,7 @@ export class PlansComponent implements OnInit {
 
   ngOnInit(): void {
     this.dtOptions = {
-      order: [[0, "desc"]],
+      order: [[3, "desc"]],
       lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "Todas"]],
       pageLength: 10,
       responsive: true,
@@ -67,14 +61,11 @@ export class PlansComponent implements OnInit {
         },
       },
       ajax: (dataTablesParameters: any, callback) => {
-        this.planS.listAdmin().subscribe((data: any) => {
+        this.userplanS.list().subscribe((data: any) => {
           console.log(data);
           
           this.dtTrigger.next("");
           this.loading = false;
-
-          this.license = data.license;
-
           callback({
             recordsTotal: data.total,
             recordsFiltered: data.to,
@@ -84,6 +75,11 @@ export class PlansComponent implements OnInit {
       },
       columns: [
         {
+          title: 'Estatus-hide',
+          data: 'status',
+          visible: false
+        },
+        {
           title: 'Id',
           data: 'id',
           width: '20',
@@ -91,21 +87,58 @@ export class PlansComponent implements OnInit {
         {
           title: "Acciones",
           data: null,
+          width:"10",
           orderable: true,
           render: (data, type, full) => {
-            if(data.name == 'Gratis'){
-              
-              return `<div class="text-center"><button disabled class="mb-1 btn_edit btn btn-xs  btn-success" style="margin-right:5px"> <i class="fa fa-edit" ></i> </button><button disabled  class="mb-1 btn_delete btn btn-xs  btn-danger"> <i class="fa fa-ban" ></i> </button></div>`;
+            if(data.status == 'revision'){
+              return `<div class="text-center"><button  class="mb-1 btn_check btn btn-xs  btn-success" style="margin-right:5px"> <i class="fa fa-check" ></i> </button></div>`;
             }else{
-              return `<div class="text-center"><button  class="mb-1 btn_edit btn btn-xs  btn-success" style="margin-right:5px"> <i class="fa fa-edit" ></i> </button><button  class="mb-1 btn_delete btn btn-xs  btn-danger"> <i class="fa fa-ban" ></i> </button></div>`;
+              return `<div class="text-center"><button  class="mb-1 btn_check btn btn-xs  btn-secondary" style="margin-right:5px"> <i class="fa fa-check" ></i> </button></div>`;
             }
-
           }
         },
         {
-          title: "Nombre",
+          title: "Fecha",
+          orderable: true,
+          data: null,
+          render: (data, type, full) => {
+            return data.date_request;
+          }
+        },
+        {
+          title: "Estatus",
+          orderable: true,
+          data: null,
+          render: (data, type, full) => {
+            if(data.status == 'revision'){
+              return "<span class='text-green'>Pendiente</span>";
+            }else if(data.status == 'rechazado'){
+              return "<span class='text-danger'>Rechazado</span>";
+            }else if(data.status == 'finalizado'){
+              return "<span class='text-secondary'>Completado</span>";
+            }else if(data.status == 'activo'){
+              return "<span class='y'>Activo</span>";
+            }
+          }
+        },
+        {
+          title: "Usuario",
+          data: 'user_alias',
+          orderable: true,
+        },
+        {
+          title: "Plan",
           data: 'name',
           orderable: true,
+        },
+        {
+          title: "Inversion",
+          orderable: true,
+          data: null,
+          render: (data, type, full) => {
+            return data.inversion.toString().replace('.',',')+" $";
+          }
+          
         },
         {
           title: 'Mínimo',
@@ -121,13 +154,6 @@ export class PlansComponent implements OnInit {
             return data.profit.toString().replace('.',',')+" %";
           }
         },
-        // {
-        //   title: "Total Ganancia",
-        //   data: null,
-        //   render: (data, type, full) => {
-        //     return data.total_profit+" $";
-        //   }
-        // },
        
         {
           title: "Duración",
@@ -141,13 +167,7 @@ export class PlansComponent implements OnInit {
             }
           }
         },
-        // {
-        //   title: "Limite de cobro",
-        //   data: null,
-        //   render: (data, type, full) => {
-        //     return data.charge_limit+" $";
-        //   }
-        // },
+
         {
           title: "Limite Prod.",
           data: 'products',
@@ -157,16 +177,11 @@ export class PlansComponent implements OnInit {
       ],
       rowCallback: (row: Node, data: any | Object, index: number) => {
         const self = this;
-
-        $('td .btn_delete', row).off('click');
-        $('td .btn_delete', row).on('click', () => {
-          self.openModalDelete(data.id);
+        $('td .btn_check', row).off('click');
+        $('td .btn_check', row).on('click', () => {
+          self.openModalCheck(data.id);
         });
-
-        $('td .btn_edit', row).off('click');
-        $('td .btn_edit', row).on('click', () => {
-          self.openModalEdit(data);
-        });
+      
       }
     };
   }
@@ -174,14 +189,12 @@ export class PlansComponent implements OnInit {
   hideForms(){
     let self = this;
     setTimeout(function(){
-      self.formCreate = false;
-      self.formEdit = false;
-      self.formLicense = false;
+      self.formCheck = false;
     },100);
-   
   }
-  receivedChild(message: any) {
 
+  receivedChild(message: any) {
+    
     if (message == "newData") {
       this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
         dtInstance.ajax.reload();
@@ -198,71 +211,42 @@ export class PlansComponent implements OnInit {
     }
   }
 
-  openModalCreate() {
-    this.formCreate = true;
-    this.modalS.open(this.modalCreate, { ariaLabelledBy: 'modal-basic-title', size: 'md' }).result.then((result) => {
-
-      if (result === 'yes') {
-
-      }
-      return;
-    }, (reason) => {
-      return;
-    });
-  }
-
-  openModalEdit(data: any) {
-    this.dataEdit = data;
-    this.formEdit = true;
-    this.modalS.open(this.modalEdit, { ariaLabelledBy: 'modal-basic-title', size: 'md' }).result.then((result) => {
-      if (result === 'yes') {
-
-      }
-      return;
-    }, (reason) => {
-      return;
-    });
-  }
-
-
-  openModalDelete( id: any) {
-    this.modalS.open(this.modalDelete, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      if (result === 'yes') {
-        this.delete(id);
-      }
-      return;
-    }, (reason) => {
-      return;
-    });
-  }
-
-  delete(id: any) {
+  openModalCheck( id: any) {
     this.loading = true;
-    this.planS.delete(id).subscribe((data: any) => {
-      if (data.result == 'ok') {
-        this.ToastrS.success(data.message);
-        this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
-          dtInstance.ajax.reload();
-        });
-      } 
-    });
-  }
-
-  openModalLicense() {
-    this.formLicense = true;
-    this.modalS.open(this.modalLicense, { ariaLabelledBy: 'modal-basic-title', size: 'md' }).result.then((result) => {
+    this.plan_id = id;
+    this.formCheck = true;
+    this.modalS.open(this.modalCheck, { ariaLabelledBy: 'modal-basic-title',size: 'lg' }).result.then((result) => {
       if (result === 'yes') {
-
+      
       }
       return;
     }, (reason) => {
       return;
+    });
+  }
+  
+  applyfilters() {
+    let value = this.input_status.nativeElement.value;
+    this.filterStatus(value);
+  }
+
+  filterStatus(event: any) {
+    if (event?.target) {
+      var status = event.target.value;
+      console.log(event.target.value);
+      var draw = false;
+    } else {
+      var draw = true;
+      var status = event;
+    }
+
+    this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      dtInstance.search('').column(0).search(status, true, false, true).draw(draw);
     });
   }
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
-    //$.fn['dataTable'].ext.search.pop();
   }
 }
 

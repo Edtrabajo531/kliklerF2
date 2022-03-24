@@ -1,0 +1,223 @@
+<div class="animate fadeIn">
+
+    <div class="card" *ngIf="loading == false">
+        <div class="card-body">
+            <h6 class="text-danger">
+                Pago en dolares:
+                <span class="font-600">25% =
+          {{ userplan?.pay_in_dollars?.toString().replace(".", ",") }} $ </span
+        >
+      </h6>
+      <h6 *ngIf="userplan.license != 0" class="text-danger"> Licencia: <span class="font-600">
+        {{license?.toString().replace(".", ",")}} $ </span
+      >   </h6>
+      <h6 *ngIf="userplan.license != 0" class="text-danger"> Total dolares: <span class="font-600">{{ userplan?.total_pay_dollars?.toString().replace(".", ",") }}  $ </span> </h6>
+            <div class="row">
+                <div class="form-group col-md-4 fadeIn">
+                    <label for="">Nombre del banco</label>
+                    <p class="m-0 mt-1">{{ userplan?.nameBank }}</p>
+                </div>
+                <div class="form-group col-md-4 fadeIn">
+                    <label for="">Propietario</label>
+                    <p class="m-0 mt-1">{{ userplan?.holderBank }}</p>
+                </div>
+                <div class="form-group col-md-4 fadeIn">
+                    <label for="">Identificación Propietario</label>
+                    <p class="m-0 mt-1">{{ userplan?.identificationBank }}</p>
+                </div>
+                <div class="form-group col-md-4 fadeIn">
+                    <label for="">Tipo de cuenta</label>
+                    <p class="m-0 mt-1">{{ userplan?.typeBank }}</p>
+                </div>
+                <div class="form-group col-md-8 fadeIn">
+                    <label for="">Número de cuenta</label>
+                    <p class="m-0 mt-1">{{ userplan?.numberAccountBank }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h6 class="text-danger">
+                Pago en Btc:
+                <span class="font-600">75% = {{ userplan?.pay_in_btc?.toString().replace(".", ",") }}$
+          USD</span
+        >
+      </h6>
+      <div class="row">
+        <div class="form-group col-md-4 fadeIn">
+          <label for="">Cartera</label>
+          <p class="m-0 mt-1">{{ userplan?.nameWallet }}</p>
+        </div>
+        <div class="form-group col-md-8 fadeIn">
+          <label for="">Dirección de cartera</label>
+          <p class="m-0 mt-1">{{ userplan?.addressWallet }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h5 class="title">IMÁGENES COPROBANTES DE PAGO</h5>
+
+  <div *ngIf="images.length != 0" class="images my-4 animate fadeIn">
+    <div class="card-image" *ngFor="let img of images; let i = index">
+      <i
+        class="fa fa-times text-danger btn-delete"
+        (click)="delete_img(img.id)"
+      ></i>
+      <img src="{{ img.src }}" alt=" " />
+      <i class="fas fa-expand" (click)="open(i)"></i>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body p-2 m-0">
+      <div class="row">
+        <div class="col-lg-5 my-2">
+          <label
+            class="btn-file px-4 text-center"
+            style="line-height: 1.2; font-weight: 500"
+          >
+            <input
+              accept=".jpeg,.png,.jpg,.gif,.svg,.webp,.jfif"
+              type="file"
+              (change)="selectFiles($event)"
+              multiple="multiple "
+              style="display: none"
+            />
+            Haga clic aquí o arrastre los archivos que desea cargar
+          </label>
+        </div>
+
+        <div class="col-lg-7 my-2">
+          <div
+            class="CardProgressUpload animate fadeIn card"
+            *ngIf="files.length != 0"
+          >
+            <div class="card-header">
+              <button
+                (click)="uploadFiles()"
+                [disabled]="files.length == 0"
+                type="button "
+                class="btn btn-primary btn-sm float-end"
+              >
+                Subir archivos
+              </button>
+              <button
+                (click)="files = []; errorServer = false"
+                type="button "
+                class="btn btn-secondary btn-sm float-end"
+                style="margin-right: 5px"
+              >
+                Limpiar
+              </button>
+              <h6 class="mt-0">CARGA DE ARCHIVOS</h6>
+              
+            </div>
+
+            <div class="card-body p-1 pt-0">
+                <!-- <p *ngIf="errorServer" class="text-danger m-0">
+                    Algunos archivos no pudieron cargarse al servidor.
+                  </p> -->
+              <table class="table m-0" style="font-size: 11px">
+                <tr>
+                  <th class="text-center ">Archivo</th>
+
+                  <th class="text-center ">Progreso</th>
+                </tr>
+                <tr *ngFor="let file of files">
+                  <td style="max-width: 50px" class="px-2">
+                    <div
+                     
+                      style="
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                      "
+                    >
+                      {{ file.name }}
+                    </div>
+                  </td>
+                
+                  <td class="text-center pt-1 px-1">
+                    <div
+                      style="
+                        font-size: 11px;
+                        margin-bottom: -10px !important;
+                        margin-top: -10px !important;
+                      "
+                      class=" m-0 p-0"
+                      [ngClass]="{ 'text-danger': file.error.length != 0 }"
+                      class="m-0"
+                    >
+                      {{ file.progress }} %
+                    </div>
+        
+                    <div
+                      class="progress p-0 mt-2"
+                      style="
+                        border: solid 1px rgb(155, 155, 155);
+                        height: 15px;
+                        margin-bottom: 5px !important;
+                        margin-top: 0 !important;
+                      "
+                    >
+                      <div
+                        class="progress-bar progress-bar-striped bg-primary"
+                        role="progressbar "
+                        [ngStyle]="{ width: file.progress + '%' }"
+                        aria-valuenow="{file.progress} "
+                        aria-valuemin="0 "
+                        aria-valuemax="100 "
+                      ></div>
+                    </div>
+                    <label *ngIf="file.error.length != 0" class="text-danger">{{
+                      file.error
+                    }}</label>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div
+            *ngIf="files.length == 0"
+            class="animate fadeIn"
+            style="
+              width: 100%;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <h6 class="" style="font-weight: 500;">
+              <i class="fa fa-info-circle" style="margin-right: 5px"></i> No se
+              han agregado archivos
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <button (click)="sendRequestActivation()"
+        type="button"
+        class="btn btn-primary mb-2 float-end"
+        [disabled]="images.length == 0"
+      >
+        Solicitar activación del plan <i class="fa fa-arrow-right"></i>
+      </button>
+
+      <button
+        (click)="sendToFather('showLoader'); sendToFatherStep(5)"
+        type="button "
+        class="btn btn-secondary float-end"
+        style="margin-right: 10px"
+      >
+        <i class="fa fa-arrow-left"></i> Atrás
+      </button>
+    </div>
+  </div>
+</div>

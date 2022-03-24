@@ -9,6 +9,7 @@ import { UserplanService } from '../../../../services/front/userplan.service';
 
 export class DetailPlanuserComponent implements OnInit {
   @Input() userplan:any;
+  loading = true;
   @Output() sendToF = new EventEmitter<any>();
   @Output() sendToFstep = new EventEmitter<any>();
   constructor(
@@ -17,9 +18,8 @@ export class DetailPlanuserComponent implements OnInit {
 
   ngOnInit(): void {
     this.userplanS.get(this.userplan?.id).subscribe( (data:any)=>{
-      this.userplan = data;
-      console.log(data);
-      
+      this.userplan = data.userplan;
+      this.loading = false;
       this.sendToFather("hideLoader");
     });
   }

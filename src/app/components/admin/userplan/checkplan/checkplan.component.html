@@ -1,0 +1,237 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title ">Verificar Plan</h5>
+    <button type="button " class="close" aria-label="Close " (click)="sendToFather('hideModal')">
+    <span aria-hidden="true ">×</span>
+  </button>
+</div>
+
+<div class="modal-body fadeIn" *ngIf="!loading && reject == false">
+    <h6 class="text-danger">Estatus del plan</h6>
+
+    <div class="row">
+        <div class="col-4">
+            <label for="">Estado</label>
+            <!-- finalizado -->
+            <!-- rechazado -->
+            <p *ngIf="userplan.status == 'revision'">Pendiente</p>
+            <p *ngIf="userplan.status == 'rechazado'">Rechazado</p>
+            <p *ngIf="userplan.status == 'activo'">Activo</p>
+            <p *ngIf="userplan.status == 'finalizado'">Finalizado</p>
+        </div>
+        <div class="col-4" *ngIf="userplan.status == 'rechazado'">
+            <label for="">Rechazado</label>
+            <p>{{userplan.date_activated}}</p>
+
+        </div>
+        <div class="col-4" *ngIf="userplan.status == 'activo'">
+            <label for="">Activado</label>
+            <p>{{userplan.date_activated}}</p>
+        </div>
+        <div class="col-4" *ngIf="userplan.status != 'revision'">
+            <label for="">Fecha de culminación</label>
+            <p>{{userplan.date_end}}</p>
+        </div>
+    </div>
+    <h6 class="text-danger">Detalles del plan</h6>
+    <div class="row">
+        <div class="col-4">
+            <label for="">Nombre</label>
+            <p>{{ userplan.name }}</p>
+        </div>
+        <div class="col-4">
+            <label for="">Inversion</label>
+            <p>{{ userplan.inversion }} $</p>
+        </div>
+        <div class="col-4">
+            <label for="">Ganancias al mes %</label>
+            <p>{{ userplan.profit }} %</p>
+        </div>
+        <div class="col-4">
+            <label for="">Ganancias al mes $</label>
+            <p>{{ userplan.minimum_charge }} $</p>
+        </div>
+        <div class="col-4">
+            <label for="">Mínimo de retiro</label>
+            <p>{{ userplan.minimum_charge }} $</p>
+        </div>
+        <div class="col-4">
+            <label for="">Duración</label>
+            <p>
+                {{ userplan.duration }} <span *ngIf="userplan.duration == 1">mes</span>
+                <span *ngIf="userplan.duration > 1">meses</span>
+            </p>
+        </div>
+        <div class="col-4">
+            <label for="">Publicación productos</label>
+            <p>{{ userplan.products }}</p>
+        </div>
+        <div class="col-4">
+            <label for="">Total ganancias</label>
+            <p>{{ userplan.total_profit }} $</p>
+        </div>
+    </div>
+    <h6 class="text-danger">Detalles del pago</h6>
+    <div class="row">
+        <div class="col-4">
+            <label for="">Pago en $ USD</label>
+            <p class="">25 % = {{ userplan.pay_in_dollars }} $</p>
+        </div>
+        <div class="col-4">
+            <label for="">Pago en bitcoins $ USD </label>
+            <p class="">75 % = {{ userplan.pay_in_btc }} $</p>
+        </div>
+        <div class="col-4" *ngIf="userplan.license != 0">
+            <label for="">Licencia (Primera vez) </label>
+            <p class="">{{ userplan.license }} $</p>
+        </div>
+        <div class="col-4" *ngIf="userplan.license != 0">
+            <label for="">Total a pagar </label>
+            <p class="">{{ userplan.total_pay }} $</p>
+        </div>
+    </div>
+
+    <h6 class="text-danger">Comprobantes de pago</h6>
+    <div *ngIf="images.length != 0" class="images my-4 animate fadeIn">
+        <div class="card-image" *ngFor="let img of images; let i = index">
+            <img src="{{ img.src }}" alt=" " />
+            <i class="fas fa-expand" (click)="open(i)"></i>
+        </div>
+    </div>
+
+    <h6 class="text-danger">Banco</h6>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="">Nombre del banco</label>
+            <p class="">{{ userplan?.nameBank }}</p>
+        </div>
+        <div class="col-md-4">
+            <label for="">Propietario</label>
+            <p class="">{{ userplan?.holderBank }}</p>
+        </div>
+        <div class="col-md-4">
+            <label for="">Identificación Propietario</label>
+            <p class="">{{ userplan?.identificationBank }}</p>
+        </div>
+        <div class="col-md-4">
+            <label for="">Tipo de cuenta</label>
+            <p class="">{{ userplan?.typeBank }}</p>
+        </div>
+        <div class="col-md-8">
+            <label for="">Número de cuenta</label>
+            <p class="">{{ userplan?.numberAccountBank }}</p>
+        </div>
+    </div>
+    <h6 class="text-danger">Cartera BTC</h6>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="">Cartera</label>
+            <p class="">{{ userplan?.nameWallet }}</p>
+        </div>
+        <div class="col-md-8">
+            <label for="">Dirección de cartera</label>
+            <p class="">{{ userplan?.addressWallet }}</p>
+        </div>
+    </div>
+
+    <h6 class="text-danger">Usuario</h6>
+    <!-- <h6 class="text-danger font-600">
+        <a class="link" href="">
+            <b> <i class="fas fa-user"></i> {{ user?.alias }} <i style="font-size13px" class="fas fa-chevron-right"></i></b>
+        </a>
+    </h6> -->
+    <p class="text-secondary m-0">Datos personales</p>
+    <div class="row">
+        <div class="col-md-6 col-lg-4">
+            <label class="m-0 " for="">Alias</label>
+            <p>{{user.alias}}</p>
+        </div>
+        <div class="col-md-6 col-lg-4 ">
+            <label class="m-0 " for="">Nombre completo</label>
+            <p>{{user.name}}</p>
+        </div>
+        <div class="col-md-6 col-lg-4 ">
+            <label class="m-0 " for="">Correo</label>
+            <p>{{user.email}}</p>
+        </div>
+        <div class="col-md-6 col-lg-4 ">
+            <label class="m-0 " for="">Tipo de documento</label>
+            <p>{{user.document_type}}</p>
+        </div>
+        <div class="col-md-6 col-lg-4 ">
+            <label class="m-0 " for="">Número de documento</label>
+            <p>{{user.document_number}}</p>
+        </div>
+        <div class="col-md-6 col-lg-4 ">
+            <label class="m-0 " for="">Fecha de nacimiento</label>
+            <p>{{user.date_of_birth | date}}</p>
+        </div>
+        <div class="col-md-6 col-lg-4 ">
+            <label class="m-0 " for="">Edad</label>
+            <p>{{user.age}}</p>
+        </div>
+    </div>
+
+    <p class="text-secondary m-0">Datos de contacto</p>
+
+    <div class="row">
+
+        <div class="col-md-6 col-lg-4 " *ngIf="user?.phone">
+            <label class="m-0 " for="">Teléfono 1</label>
+            <p>{{jsonDecode(user.phone).number}}</p>
+        </div>
+        <div class="col-md-6 col-lg-4 " *ngIf="user?.phone2">
+            <label class="m-0 " for="">Teléfono 2</label>
+            <p>{{jsonDecode(user.phone2).number}}</p>
+        </div>
+        <div class="col-md-6 col-lg-4 ">
+            <label class="m-0 " for="">Provincia</label>
+            <p>{{user.state}}</p>
+        </div>
+        <div class="col-md-6 col-lg-4 ">
+            <label class="m-0 " for="">Canton</label>
+            <p>{{user.city}}</p>
+        </div>
+        <div class="col-xs-12 " *ngIf="user?.address">
+            <label class="m-0 " for="">Dirección</label>
+            <p>{{user.address}}</p>
+        </div>
+
+    </div>
+
+</div>
+<div class="modal-body fadeIn" *ngIf="reject">
+    <h5 class="text-warning"> ¿Esta segur@ de rechazar la activación de este plan?</h5>
+    <label for="">Motivos del rechazo (Opcional)</label>
+    <textarea #reject_message class="form-control" name="" cols="30" rows="3" placeholder="Respuesta" maxlength="500"></textarea>
+    <br>
+
+    <div class="row">
+        <div class="col-12">
+            <button (click)="rejectPlan(userplan?.id)" type="button " class="btn btn-primary float-end ml-2">
+                Rechazar Activación de plan
+          </button>
+            <button (click)="reject = !reject" type="button " class="btn btn-secondary float-end">
+            Cancelar
+          </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer fadeIn" *ngIf="!reject">
+    <button type="button" class="btn btn-white" (click)="sendToFather('hideModal')">
+    Cerrar
+  </button>
+    <button (click)="reject = !reject" type="button " class="btn btn-secondary">
+    Rechazar Activación de plan
+  </button>
+    <button (click)="activatePlan(userplan?.id)" type="button " class="btn btn-primary">
+    Activar plan
+  </button>
+
+    <!-- <button [disabled]="userplan.status != 'revision'" (click)="rejectPlan(userplan?.id)" type="button " class="btn btn-secondary">
+    Rechazar Activación de plan
+  </button>
+    <button [disabled]="userplan.status != 'revision'" (click)="activatePlan(userplan?.id)" type="button " class="btn btn-primary">
+    Activar plan
+  </button> -->
+</div>

@@ -1,29 +1,83 @@
-<p> <span class="font-600 text-danger">Paso 5:</span> Selecciona las cuentas a donde realizara el pago del plan</p>
+<div class="fadeIn">
 
-<div class="card">
-    <form [formGroup]="form" *ngIf="form" (ngSubmit)="submit()" autocomplete="off">
-        <div class="card-header" ngbAutofocus>
-            <h5 class="modal-title" id="exampleModalLabel">Cuentas Pagos</h5>
-        </div>
-        <div class="card-body">
 
-            <div class=" form-group" style="max-width: 200px;">
-                <label for=" ">Cuenta Bancaria (25 %)</label>
-                <input placeholder="Mínimo {{userplan.cost}} $" type="text" formControlName="inversion" class="form-control">
-                <label *ngIf="validate( 'inversion').valid " class="text-danger "> {{validate('inversion').error}} </label>
+    <div class="card fadeIn" *ngIf="form">
+        <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="off">
+            <div class="card-header" ngbAutofocus>
+                <h5 class="modal-title" id="exampleModalLabel">Cuentas Pagos</h5>
             </div>
-            <hr>
-            <div class=" form-group" style="max-width: 200px;">
-                <label for=" ">Cartera Bitcoins (75%)</label>
-                <input placeholder="Mínimo {{userplan.cost}} $" type="text" formControlName="inversion" class="form-control">
-                <label *ngIf="validate( 'inversion').valid " class="text-danger "> {{validate('inversion').error}} </label>
+            <div class="card-body">
+
+
+                <!-- <div class="row"> -->
+
+                <!-- 
+                    <div class="form-group col-md-4 fadeIn" *ngIf="selectedBank?.length">
+                        <label for="">Nombre del banco</label>
+                        <p class="m-0 mt-1">{{ selectedBank[0]?.name }}</p>
+                    </div>
+                    <div class="form-group col-md-4 fadeIn" *ngIf="selectedBank?.length">
+                        <label for="">Propietario</label>
+                        <p class="m-0 mt-1">{{ selectedBank[0]?.holder }}</p>
+                    </div>
+                    <div class="form-group col-md-4 fadeIn" *ngIf="selectedBank?.length">
+                        <label for="">Identificación Propietario</label>
+                        <p class="m-0 mt-1">{{ selectedBank[0]?.identification }}</p>
+                    </div>
+                    <div class="form-group col-md-4 fadeIn" *ngIf="selectedBank?.length">
+                        <label for="">Tipo de cuenta</label>
+                        <p class="m-0 mt-1">{{ selectedBank[0]?.type }}</p>
+                    </div>
+                    <div class="form-group col-md-8 fadeIn" *ngIf="selectedBank?.length">
+                        <label for="">Número de cuenta</label>
+                        <p class="m-0 mt-1">{{ selectedBank[0]?.numberAccount }}</p>
+                    </div> -->
+
+                <!-- </div> -->
+
+
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+
+                        <label for=" ">Cuenta Bancaria </label>
+                        <select (change)="showSelectedBank($event)" formControlName="bank_id" class="form-control">
+                            <option value=""></option>
+                            <option *ngFor="let bank of banks" value="{{ bank.id }}">
+                            {{ bank.name }} - {{ bank.holder }} - {{ bank.type }}
+                            </option>
+                        </select>
+                        <label *ngIf="validate('bank_id').valid" class="text-danger">
+                            {{ validate("bank_id").error }}
+                        </label>
+                    </div>
+                    <div class="form-group  col-md-4">
+
+                        <label for=" ">Cartera Bitcoins </label>
+                        <select (change)="showSelectedBtc($event)" formControlName="wallet_id" class="form-control">
+                            <option value=""></option>
+                            <option *ngFor="let wallet of wallets" value="{{ wallet.id }}">
+                                {{ wallet.name }}
+                            </option>
+                        </select>
+                        <label *ngIf="validate('wallet_id').valid" class="text-danger">
+                        {{ validate("wallet_id").error }}
+                        </label>
+                    </div>
+
+
+                </div>
+
             </div>
-            <!-- state_id city_id address -->
-        </div>
-        <div class="card-footer">
-            <button class="btn btn-primary float-end ml-2" type="submit"> Siguiente <i class="fas fa-arrow-right"></i> </button>
-            <button (click)="sendToFather('showLoader');sendToFatherStep(2)" class="btn btn-secondary float-end" type="button"> <i class="fas fa-arrow-left"></i> Atrás </button>
-        </div>
-        <!-- Submit Form Button Ends -->
-    </form>
+            <div class="card-footer">
+                <button class="btn btn-primary float-end ml-2" type="submit">
+            Siguiente <i class="fas fa-arrow-right"></i>
+          </button>
+                <button (click)="sendToFather('showLoader'); sendToFatherStep(4)" class="btn btn-secondary float-end" type="button">
+            <i class="fas fa-arrow-left"></i> Atrás
+          </button>
+            </div>
+            <!-- Submit Form Button Ends -->
+        </form>
+    </div>
 </div>

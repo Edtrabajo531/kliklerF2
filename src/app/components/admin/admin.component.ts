@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Event, NavigationEnd, NavigationStart } from '@angular/router';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,9 +10,14 @@ import { Router, Event, NavigationEnd, NavigationStart } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
   submenu1:boolean;
-  constructor(private router:Router) { }
+  userAuth:User;
+  constructor(
+    private router:Router,
+    private authS:AuthService,
+    ) { }
 
   ngOnInit(): void {
+    this.userAuth = this.authS.getAuth();
     let url = this.router.url
     if(url.includes("cuentas-bancarias") || url.includes("carteras-bitcoins")){
       this.submenu1 = true;
@@ -27,5 +34,9 @@ export class AdminComponent implements OnInit {
           }
       }
   });
+  }
+
+  logout(){
+    this.authS.logout();
   }
 }

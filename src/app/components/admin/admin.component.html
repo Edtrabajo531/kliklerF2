@@ -18,42 +18,22 @@
         <ul class="navbar-nav ml-auto">
             <!-- Navbar Search -->
             <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">15 Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i> {{ userAuth.alias }}
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
+                        <div>
+                            <li><a (click)="logout()" class="dropdown-item">Cerrar sesión</a></li>
+                        </div>
+
+                    </ul>
                 </div>
+
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <i class="fas fa-th-large"></i>
-                </a>
-            </li>
+
         </ul>
     </nav>
     <!-- /.navbar -->
@@ -61,7 +41,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar  elevation-4 bg-white">
         <!-- Brand Logo -->
-        <a routerLink="/admin" class=" text-center p-0 bg-danger" style="height: 56px;display: flex;justify-content: center;align-items: center;">
+        <a routerLink="/" class=" text-center p-0 bg-danger" style="height: 56px;display: flex;justify-content: center;align-items: center;">
             <img height="50" src="assets\logotipos\logo-sm.png" alt="" class="fadeIn brand-image2 elevation-3 float-end" style="opacity: .8">
             <!-- <span class="brand-text font-weight-light"> </span> -->
             <img width="160" class="fadeIn brand-text2 font-weight-light m-0 p-0" src="assets/logotipos/klikler-text-logo.png" alt="">
@@ -78,10 +58,6 @@
                     <a href="#" class="d-block">Alexander Pierce</a>
                 </div>
             </div> -->
-
-
-
-
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -94,9 +70,16 @@
                             </p>
                         </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a routerLink="/administrar/planes-usuarios" routerLinkActive="active" class="nav-link">
+                            <i class="nav-icon fas fa-list-check"></i>
+                            <p>
+                                Planes Usuarios
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-item" [ngClass]="{'menu-is-opening': submenu1}">
-                        <a href="#" class="nav-link" (click)="submenu1 = !submenu1">
+                        <a class="nav-link" (click)="submenu1 = !submenu1">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
                                 Pagos
@@ -166,6 +149,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <div style="max-width: 99.5%;margin: auto;">
+            <br>
             <router-outlet></router-outlet>
         </div>
     </div>

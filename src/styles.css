@@ -181,6 +181,10 @@ label.text-danger {
     border: solid 1px var(--red);
 }
 
+.btn-primary:disabled {
+    border: solid 1px var(--red);
+}
+
 .btn-primary:hover {
     background: linear-gradient(to bottom, rgb(252, 118, 132), rgb(247, 81, 97));
     border: solid 1px var(--red-l) !important;
@@ -459,4 +463,18 @@ input[type='radio']:checked:after {
 
 .text-dark {
     text-shadow: none;
+}
+
+.btn-white {
+    border: solid 1px grey;
+}
+
+.link {
+    color: var(--red);
+    text-decoration: none;
+}
+
+.link:hover {
+    color: var(--red-l);
+    cursor: pointer;
 }

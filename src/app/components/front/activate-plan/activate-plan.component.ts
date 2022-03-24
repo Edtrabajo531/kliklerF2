@@ -14,6 +14,7 @@ export class ActivatePlanComponent implements OnInit {
   userplan:any;
   step = 0;
   loading = true;
+  stepsCant:any;
   constructor(
     private activatedR:ActivatedRoute,
     private planS:PlansService,
@@ -26,10 +27,17 @@ export class ActivatePlanComponent implements OnInit {
       this.planS.activate_plan(id).subscribe((result:any)=>{
         if(result == 'no-existe'){
           this.router.navigateByUrl('/planes')
+        }else if(result == "plan-review"){
+          this.router.navigateByUrl('/plan-en-revision');
+        }
+        if(result.datauser == 'complete'){
+          this.stepsCant = 4;
+        }else{
+          this.stepsCant = 6;
         }
         this.plan = result.plan;
         this.userplan = result.userplan;
-        this.step = 5;
+        this.step = 1;
       })
     });
   }
@@ -44,8 +52,6 @@ export class ActivatePlanComponent implements OnInit {
 
   receiveStep(value: any) {
     this.step = value;
-    console.log("RECE");
-    
   }
  
 }

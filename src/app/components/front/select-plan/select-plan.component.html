@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-
+<app-loader *ngIf="loading"></app-loader>
 <div class="container pt-5 fadeIn" *ngIf="step == 1">
     <div class="card">
         <div class="card-body p-0">
@@ -22,7 +22,7 @@
         <p class="mt-0">Haz clic sobre el plan deseado y presiona el botón "siguiente" para continuar.</p>
         <div class="row" *ngIf="plans">
             <div class="col-3 mb-4" *ngFor="let plan of plans">
-                <div [ngClass]="{'card-selected' : selectedPlan?.id == plan.id}" class="card card-plan" (click)="selectedPlan = plan">
+                <div style="height: 100%;" [ngClass]="{'card-selected' : selectedPlan?.id == plan.id}" class="card card-plan" (click)="selectedPlan = plan">
                     <div class="card-header bg-white ">
                         <div class="form-check form-check-inline m-0">
                             <input [checked]="selectedPlan?.id == plan.id" class="form-check-input" type="radio" name="selectPlan" value="{{plan.id}}">
@@ -31,9 +31,12 @@
                     </div>
                     <div class="card-body bg-danger ">
                         <p class="m-0 text-white "><span class="font-500 ">Precio (mín):</span> {{plan.cost}} $</p>
-                        <p class="m-0 text-white "><span class="font-500 ">Ganancia (mes):</span> {{plan.profit}} %</p>
-
+                        <p class="m-0 text-white "><span class="font-500 ">Ganancia :</span> {{plan.profit}} % (mes)</p>
+                        <p class="m-0 text-white "><span class="font-500 ">Duración :</span> <span *ngIf="plan.duration != 0"> {{plan.duration}} </span> <span *ngIf="plan.duration == 0"> <i class="fas fa-infinity ml-1"></i>  </span> <span *ngIf="plan.duration == 1">mes</span>
+                            <span *ngIf="plan.duration > 1">meses</span>
+                        </p>
                         <p class="m-0 text-white "><span class="font-500 ">Publicaciones:</span> {{ plan.products }} </p>
+                        <p class="m-0 text-white" *ngIf="plan.cost != 0"><span class="font-500 ">Lisencia:</span> {{lisence}} $</p>
                     </div>
                 </div>
             </div>

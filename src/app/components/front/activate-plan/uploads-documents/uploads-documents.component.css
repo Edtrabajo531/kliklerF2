@@ -1,0 +1,68 @@
+.btn-file {
+    width: 100%;
+    height: 100px;
+    border: dotted 2px var(--red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width:992px) {
+    .btn-file {
+        height: 50px;
+    }
+}
+
+.btn-file:hover {
+    cursor: pointer;
+    background: rgb(242, 242, 242);
+}
+
+
+/* Show the tooltip2 text when you mouse over the tooltip2 container */
+
+.tooltip2:hover .tooltip2text {
+    visibility: visible;
+}
+
+.card-image {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border: solid 2px rgb(231, 231, 231);
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-delete {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background: rgba(255, 255, 255, 0.582);
+    padding: 2px;
+    border: solid 1px rgb(187, 185, 185);
+}
+
+.btn-delete:hover {
+    cursor: pointer;
+}
+
+.fa-expand {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.472);
+    bottom: 5px;
+    right: 5px;
+    padding: 4px;
+    color: white;
+}
+
+.fa-expand:hover {
+    cursor: zoom-in;
+}

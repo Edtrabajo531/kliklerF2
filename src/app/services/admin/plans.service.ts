@@ -11,7 +11,7 @@ export class PlansService {
   constructor(
     private http:HttpClient
   ) { }
-  
+
   updateLicense(data:any){
     return this.http.post(this.ENDPOINT + "admin/update-license", data);
   }
@@ -19,7 +19,10 @@ export class PlansService {
   activate_plan(id:number){
     return this.http.post(this.ENDPOINT + "activate-plan/"+id, "");
   }
-
+  
+  listAdmin(){
+    return this.http.post(this.ENDPOINT + "admin/plans", "");
+  }
   list(){
     return this.http.post(this.ENDPOINT + "plans", "");
   }

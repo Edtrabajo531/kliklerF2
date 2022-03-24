@@ -10,12 +10,19 @@ import { WalletsComponent } from './components/admin/wallets/wallets.component';
 import { AddDataUserComponent } from './components/front/add-data-user/add-data-user.component';
 import { AddDataContactComponent } from './components/front/add-data-user/add-data-contact/add-data-contact.component';
 import { InsertAmountComponent } from './components/front/activate-plan/insert-amount/insert-amount.component';
+import { PlanReviewComponent } from './components/front/shared/plan-review/plan-review.component';
+import { UserplanComponent } from './components/admin/userplan/userplan.component';
+import { MyPlanComponent } from './components/front/my-plan/my-plan.component';
+import { SaldoComponent } from './components/front/saldo/saldo.component';
 
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: 'mi-plan', pathMatch: 'full', component: MyPlanComponent },
   { path: 'planes', pathMatch: 'full', component: SelectPlanComponent },
- 
+  { path: 'plan-en-revision', pathMatch: 'full', component: PlanReviewComponent },
+  { path: 'saldo', pathMatch: 'full', component: SaldoComponent },
+
   {
     path: 'activar-plan/:id',
     component: ActivatePlanComponent,
@@ -32,10 +39,12 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: 'planes', component: PlansComponent },
+      { path: 'planes-usuarios', component: UserplanComponent },
       { path: 'cuentas-bancarias', component: BankAccountsComponent },
       { path: 'carteras-bitcoins', component: WalletsComponent },
     ],
   },
+  { path: 'admin', pathMatch: 'full', redirectTo: 'administrar/planes' },
   { path: '**', pathMatch: 'full', redirectTo: '' },
 ];
 

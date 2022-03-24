@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+<app-loader *ngIf="loading"></app-loader>
+<div class="container mt-5 fadeIn">
+    <h3 class="title text-center ">Plan en revision</h3>
+    <br>
+    <h6 class="text-center fadein" *ngIf="userplan">Usted tiene una solicitud de activación de plan: <b>"{{userplan.name}}"</b> en revisión, no podrá realizar nueva solicitud hasta que esta sea confirmada o rechazada.</h6>
+    <br>
+    <div class="text-center">
+        <button routerLink="/" class="btn btn-primary"> <i class="fas fa-home"></i> Inicio</button>
+    </div>
+</div>

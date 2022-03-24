@@ -1,35 +1,94 @@
 <app-navbar></app-navbar>
 <app-loader *ngIf="loading"></app-loader>
-<div class="container pt-5">
+<div class="container" *ngIf="stepsCant && step != 7">
     <h3 class="title">Activar plan: <span class="text-dark">{{plan?.name}} </span> </h3>
     <h6>Para activar plan "{{plan?.name}}" completa los siguientes pasos: </h6>
 
-    <div class="form-inline">
-        <div class="step" [ngClass]="{'active':step == 1 }">
-            1
+    <div *ngIf="stepsCant == 6">
+        <div class="form-inline mb-3">
+            <div class="step" [ngClass]="{'active':step == 1 }">
+                1
+            </div>
+            <div class="step" [ngClass]="{'active':step == 2 }">
+                2
+            </div>
+            <div class="step" [ngClass]="{'active':step == 3 }">
+                3
+            </div>
+            <div class="step" [ngClass]="{'active':step == 4 }">
+                4
+            </div>
+            <div class="step" [ngClass]="{'active':step == 5 }">
+                5
+            </div>
+            <div class="step" [ngClass]="{'active':step == 6 }">
+                6
+            </div>
         </div>
-        <div class="step" [ngClass]="{'active':step == 2 }">
-            2
-        </div>
-        <div class="step" [ngClass]="{'active':step == 3 }">
-            3
-        </div>
-        <div class="step" [ngClass]="{'active':step == 4 }">
-            4
-        </div>
-        <div class="step" [ngClass]="{'active':step == 5 }">
-            5
-        </div>
+
+        <p *ngIf="step == 1"> <span class="font-600 text-danger">Paso 1:</span> Completa tus datos personales. </p>
+        <p *ngIf="step == 2"> <span class="font-600 text-danger">Paso 2:</span> Completa tus datos de contacto. </p>
+        <p *ngIf="step == 3"> <span class="font-600 text-danger">Paso 3:</span> Inserta el monto de inversión para tu plan. </p>
+        <p *ngIf="step == 4"> <span class="font-600 text-danger">Paso 4:</span> Verifica los detalles del plan. </p>
+        <p *ngIf="step == 5">
+            <span class="font-600 text-danger">Paso 5:</span> Selecciona las cuentas a donde realizara el pago del plan
+        </p>
+        <p *ngIf="step == 6">
+            <strong>Paso 6:</strong> Realiza los pagos y sube los comprobantes respectivos.
+        </p>
     </div>
-    <br>
-    <app-add-data-user (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 1"></app-add-data-user>
 
-    <app-add-data-contact (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 2"></app-add-data-contact>
+    <div *ngIf="stepsCant == 4">
+        <div class="form-inline mb-3">
+            <div class="step" [ngClass]="{'active':step == 1 ||  step == 3}">
+                1
+            </div>
+            <div class="step" [ngClass]="{'active':step == 4 }">
+                2
+            </div>
+            <div class="step" [ngClass]="{'active':step == 5 }">
+                3
+            </div>
+            <div class="step" [ngClass]="{'active':step == 6 }">
+                4
+            </div>
+        </div>
 
-    <app-insert-amount [userplan]="userplan" (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 3"></app-insert-amount>
+        <p *ngIf="step == 3 || step == 1"> <span class="font-600 text-danger">Paso 1:</span> Inserta el monto de inversión para tu plan. </p>
+        <p *ngIf="step == 4"> <span class="font-600 text-danger">Paso 2:</span> Verifica los detalles del plan. </p>
 
+        <p *ngIf="step == 5">
+            <span class="font-600 text-danger">Paso 3:</span> Selecciona las cuentas a donde realizara el pago del plan
+        </p>
+
+        <p *ngIf="step == 6">
+            <span class="font-600 text-danger">Paso 4:</span> Realiza los pagos y sube los comprobantes respectivos.
+        </p>
+    </div>
+    <!-- 1 -->
+    <app-add-data-user (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 1 && stepsCant == 6"></app-add-data-user>
+    <!-- 2 -->
+    <app-add-data-contact (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 2 && stepsCant == 6"></app-add-data-contact>
+    <!-- 3 -->
+    <app-insert-amount [stepsCant]="stepsCant" [userplan]="userplan" (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 3 && stepsCant == 6 || step == 1 && stepsCant == 4 || step == 3 && stepsCant == 4"></app-insert-amount>
+    <!-- 4 -->
     <app-detail-planuser [userplan]="userplan" (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 4"></app-detail-planuser>
     <!-- <router-outlet *ngIf="plan"></router-outlet> -->
     <app-select-accounts-payment [userplan]="userplan" (sendToF)="receiveChild($event)" (sendToFstep)="receiveStep($event)" *ngIf="step == 5"></app-select-accounts-payment>
 
+    <app-uploads-documents [userplan]="userplan " (sendToF)="receiveChild($event) " (sendToFstep)="receiveStep($event) " *ngIf="step == 6"></app-uploads-documents>
+
 </div>
+
+<div class="container fadein" *ngIf="step == 7">
+    <div class="container mt-5 fadeIn">
+        <h3 class="title text-center ">Solicitud de activación de plan enviada.</h3>
+        <br>
+        <h6 class="text-center fadein" *ngIf="userplan">Pronto recibira un correo que le permitira comprobar si su petición fue aprobada o rechazada.</h6>
+        <br>
+        <div class="text-center">
+            <button routerLink="/" class="btn btn-primary"> <i class="fas fa-home"></i> Inicio</button>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

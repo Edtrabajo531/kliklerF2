@@ -37,6 +37,7 @@
                             "node_modules/ngx-toastr/toastr.css",
                             "node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css",
                             "node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css",
+                            "node_modules/ngx-lightbox/lightbox.css",
                             "src/styles.css"
                         ],
                         "scripts": [
@@ -52,13 +53,13 @@
                         "production": {
                             "budgets": [{
                                     "type": "initial",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "1mb"
+                                    "maximumWarning": "5mb",
+                                    "maximumError": "15mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
-                                    "maximumWarning": "2kb",
-                                    "maximumError": "4kb"
+                                    "maximumWarning": "20kb",
+                                    "maximumError": "40kb"
                                 }
                             ],
                             "fileReplacements": [{

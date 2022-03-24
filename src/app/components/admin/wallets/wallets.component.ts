@@ -105,16 +105,16 @@ export class WalletsComponent implements OnInit {
           data: 'address',
           orderable: true,
         },
-        {
-          title: "Moneda",
-          data: 'coin',
-          orderable: true,
-        },
-        {
-          title: "Enlace / url",
-          data: 'link',
-          orderable: true,
-        },
+        // {
+        //   title: "Moneda",
+        //   data: 'coin',
+        //   orderable: true,
+        // },
+        // {
+        //   title: "Enlace / url",
+        //   data: 'link',
+        //   orderable: true,
+        // },
 
       ],
       rowCallback: (row: Node, data: any | Object, index: number) => {
