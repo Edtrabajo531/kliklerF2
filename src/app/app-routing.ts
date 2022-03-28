@@ -7,21 +7,36 @@ import { SelectPlanComponent } from './components/front/select-plan/select-plan.
 import { ActivatePlanComponent } from './components/front/activate-plan/activate-plan.component';
 import { BankAccountsComponent } from './components/admin/bank-accounts/bank-accounts.component';
 import { WalletsComponent } from './components/admin/wallets/wallets.component';
-import { AddDataUserComponent } from './components/front/add-data-user/add-data-user.component';
-import { AddDataContactComponent } from './components/front/add-data-user/add-data-contact/add-data-contact.component';
-import { InsertAmountComponent } from './components/front/activate-plan/insert-amount/insert-amount.component';
 import { PlanReviewComponent } from './components/front/shared/plan-review/plan-review.component';
 import { UserplanComponent } from './components/admin/userplan/userplan.component';
 import { MyPlanComponent } from './components/front/my-plan/my-plan.component';
 import { SaldoComponent } from './components/front/saldo/saldo.component';
+import { PanelComponent } from './components/front/panel/panel.component';
+import { PostsComponent } from './components/front/panel/posts/posts.component';
+import { PostProductComponent } from './components/front/panel/post-product/post-product.component';
+import { DetailsComponent } from './components/front/post/details/details.component';
 
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
-  { path: 'mi-plan', pathMatch: 'full', component: MyPlanComponent },
-  { path: 'planes', pathMatch: 'full', component: SelectPlanComponent },
+  
+  { path: 'detalles-publicacion/:slug', pathMatch: 'full', component: DetailsComponent },
   { path: 'plan-en-revision', pathMatch: 'full', component: PlanReviewComponent },
-  { path: 'saldo', pathMatch: 'full', component: SaldoComponent },
+  
+  
+  {
+    path: 'panel',
+    component: PanelComponent,
+    children: [
+      { path: 'saldo', component: SaldoComponent },
+      { path: 'mi-plan', pathMatch: 'full', component: MyPlanComponent },
+      { path: 'planes', pathMatch: 'full', component: SelectPlanComponent },
+      { path: 'mis-publicaciones', pathMatch: 'full', component: PostsComponent },
+      { path: 'publicar-producto', pathMatch: 'full', component: PostProductComponent },
+
+     
+    ],
+  },
 
   {
     path: 'activar-plan/:id',

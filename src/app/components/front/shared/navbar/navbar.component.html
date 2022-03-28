@@ -2,7 +2,7 @@
     <div class="container">
         <div class="section-1">
             <div class="content-center">
-                <img class="logo" src="assets\logotipos\klikler-text-logo.png" alt="" />
+                <img class="logo hover" routerLink="/" src="assets\logotipos\klikler-text-logo.png" alt="" />
             </div>
         </div>
         <div class="section-2">
@@ -10,7 +10,7 @@
         </div>
         <div class="section-3">
             <div class="content-center" *ngIf="userAuth?.id">
-                <a routerLink="/saldo" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <a routerLink="/panel/saldo" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-dollar"></i> Saldo
                 </a>
                 <div class="dropdown">
@@ -20,8 +20,9 @@
                     <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
                         <div *ngIf="userAuth.role == 'cliente'">
                             <li><a class="dropdown-item">Perfil</a></li>
-                            <li><a routerLink="/mi-plan" class="dropdown-item">Mi Plan </a></li>
-                            <li><a routerLink="/planes" class="dropdown-item">Planes</a></li>
+                            <li><a routerLink="/panel/saldo" class="dropdown-item">Panel de control </a></li>
+                            <!-- <li><a routerLink="/mi-plan" class="dropdown-item">Mi Plan </a></li> -->
+                            <!-- <li><a routerLink="/planes" class="dropdown-item">Planes</a></li> -->
                             <li><a (click)="logout()" class="dropdown-item">Cerrar sesión</a></li>
                         </div>
                         <div *ngIf="userAuth.role == 'administrador' || userAuth.role == 'administrador-p'">

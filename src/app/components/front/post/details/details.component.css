@@ -1,0 +1,23 @@
+.ngx-gallery {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+
+/* .ngx-gallery-image {
+    background-size: contain;
+} */
+
+.ngx-gallery-arrow-left {
+    color: red !important;
+    background: red !important;
+}
+
+ngx-gallery /deep/ .ngx-gallery-icon {
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 30px;
+    background-color: rgba(255, 255, 255, 0.11);
+    padding: 5px 10px 5px 10px;
+    color: rgba(255, 0, 0, 0.404);
+    border-radius: 100%;
+}

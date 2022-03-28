@@ -1,7 +1,7 @@
-<app-navbar></app-navbar>
-<app-loader *ngIf="loading"></app-loader>
-<div class="container text-center">
-    <h2 class="title">plan activo </h2>
+<app-loader *ngIf="loading">
+</app-loader>
+<div class=" text-center">
+    <h2 class="title-dark">plan activo </h2>
     <br>
     <h4>Tu plan activo es el plan: "{{userplan?.name}}".</h4>
     <br>

@@ -38,6 +38,8 @@
                             "node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css",
                             "node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css",
                             "node_modules/ngx-lightbox/lightbox.css",
+                            "src/assets/animate_resume.css",
+                            "node_modules/animate.css/animate.css",
                             "src/styles.css"
                         ],
                         "scripts": [
@@ -46,7 +48,8 @@
                             "src/assets/AdminLTE-3.2.0/dist/js/adminlte.min.js",
                             "node_modules/datatables.net/js/jquery.dataTables.min.js",
                             "node_modules/datatables.net-responsive/js/dataTables.responsive.js",
-                            "node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"
+                            "node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js",
+                            "node_modules/wowjs/dist/wow.js"
                         ]
                     },
                     "configurations": {

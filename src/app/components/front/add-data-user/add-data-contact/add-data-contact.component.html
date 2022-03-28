@@ -8,14 +8,14 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-3 col-sm-6 form-group">
-                        <label for=" ">Teléfono 1 <span class="text-danger">*</span> </label>
+                        <label>Teléfono 1 <span class="text-danger">*</span> </label> <br>
                         <ngx-intl-tel-input maxlength="30" [onlyCountries]="onlyCountries" [cssClass]="'form-control'" [enableAutoCountrySelect]="true" [enablePlaceholder]="false" [searchCountryFlag]="false" [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.Ecuador"
                             maxLength="15" [phoneValidation]="true" [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" formControlName="phone">
                         </ngx-intl-tel-input>
                         <label *ngIf="validate('phone').valid" class="text-danger "> {{validate('phone').error}} </label>
                     </div>
                     <div class="col-md-3 col-sm-6 form-group">
-                        <label for=" ">Teléfono 2</label>
+                        <label>Teléfono 2</label> <br>
                         <ngx-intl-tel-input maxlength="30" [onlyCountries]="onlyCountries" [cssClass]="'form-control'" [enableAutoCountrySelect]="true" [enablePlaceholder]="false" [searchCountryFlag]="false" [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.Ecuador"
                             maxLength="15" [phoneValidation]="true" [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" formControlName="phone2">
                         </ngx-intl-tel-input>

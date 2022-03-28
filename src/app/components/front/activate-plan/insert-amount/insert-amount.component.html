@@ -20,7 +20,7 @@
 
             <div class="card-footer">
                 <button class="btn btn-primary float-end ml-2" type="submit"> Siguiente <i class="fas fa-arrow-right"></i> </button>
-                <button *ngIf="stepsCant == 4" routerLink="/planes" class="btn btn-secondary float-end" type="button"> Planes </button>
+                <button *ngIf="stepsCant == 4" routerLink="/panel/planes" class="btn btn-secondary float-end" type="button"> Planes </button>
                 <button *ngIf="stepsCant == 6" (click)="sendToFather('showLoader');sendToFatherStep(2)" class="btn btn-secondary float-end" type="button"> <i class="fas fa-arrow-left"></i> Atrás </button>
             </div>
             <!-- Submit Form Button Ends -->

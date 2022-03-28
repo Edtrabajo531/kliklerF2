@@ -1,0 +1,41 @@
+.container-sideBar {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    float: left;
+}
+
+.side_bar {
+    width: 250px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
+
+.accordion-button.no-arrow::after {
+    content: none;
+}
+
+.accordion-button:focus {
+    background: var(--red) !important;
+}
+
+.accordion-button:hover {
+    background: var(--red-l) !important;
+}
+
+.accordion-button:hover {
+    background: var(--red-l) !important;
+}
+
+.accordion-button-child {
+    border-top: 1px rgb(194, 0, 0) solid;
+    /* margin-left: 5px; */
+}
+
+.accordion-button.active {
+    background: var(--red-l) !important;
+}

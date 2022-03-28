@@ -1,21 +1,103 @@
-<app-navbar></app-navbar>
-<div class="container">
-    <h2 class="title">Saldo</h2>
+<app-loader *ngIf="loading"></app-loader>
+<div class="fadeIn">
+    <h2 class="title-dark">
+        Saldo</h2>
+    <br>
+    <div class="fadeIn row" *ngIf="balance">
 
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-4">
-                    <h6 class="text-secondary m-0">Inversión</h6>
-                    <h5 class="">300 $</h5>
+        <div class="row">
+            <h4 class="text-secondary">Ganancias</h4>
+            <div class="col-4">
+                <div class="card ">
+                    <div class="card-header bg-danger">
+                        <h6 class="text-white m-0">Ganancias</h6>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="float-end text-secondary mt-2"> {{ balance.earnings_total | number}} </h4>
+                        <h3><i class="fas fa-dollar text-secondary"></i> </h3>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <h6 class="text-secondary m-0">Ganancias totales</h6>
-                    <h5 class="">300 $</h5>
+            </div>
+            <div class="col-4">
+                <div class="card ">
+                    <div class="card-header bg-danger">
+                        <h6 class="text-white m-0">Ganancias hasta la fecha</h6>
+                    </div>
+                    <div class="card-body">
+
+                        <h4 class="float-end text-secondary mt-2">{{ balance.earnings_to_date | number}} </h4>
+                        <h3><i class="fas fa-dollar text-secondary"></i> </h3>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <h6 class="text-secondary m-0">Saldo Disponible</h6>
-                    <h5 class="">300 $</h5>
+            </div>
+
+        </div>
+
+        <h4 class="text-secondary">Inversión</h4>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header bg-danger">
+                        <h6 class="text-white m-0">Inversión</h6>
+                    </div>
+                    <div class="card-body">
+
+                        <h4 class="float-end text-secondary mt-2">{{ balance.inversion_total | number}}</h4>
+                        <h3><i class="fas fa-dollar text-secondary"></i> </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header bg-danger">
+                        <h6 class="text-white m-0">Mínimo de retiro</h6>
+                    </div>
+                    <div class="card-body">
+
+                        <h4 class="float-end text-secondary mt-2">{{ balance.minimum_charge }}</h4>
+                        <h3><i class="fas fa-dollar text-secondary"></i> </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header bg-danger">
+                        <h6 class="text-white m-0">Beneficios plan activo</h6>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="float-end text-secondary mt-2">{{ balance.porcentage_month | number}} % = {{ balance.profit_month | number}} $ x mes</h5>
+                        <!-- <h3><i class="fas fa-dollar text-secondary"></i> </h3> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="text-secondary">Disponible</h4>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header bg-danger">
+                        <h6 class="text-white m-0">Ganancias liberadas</h6>
+                    </div>
+                    <div class="card-body">
+
+                        <h4 class="float-end text-secondary mt-2 text-secondary"> {{ balance.earnings_available | number}} </h4>
+                        <h3><i class="fas fa-dollar text-secondary"></i> </h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header bg-danger">
+                        <h6 class="text-white m-0">Inversión liberada</h6>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="float-end text-secondary mt-2"> {{ balance.inversion_available | number}} </h4>
+                        <h3><i class="fas fa-dollar text-secondary"></i> </h3>
+                    </div>
                 </div>
             </div>
         </div>

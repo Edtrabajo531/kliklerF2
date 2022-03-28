@@ -1,6 +1,8 @@
 <app-navbar></app-navbar>
 <app-loader *ngIf="loading"></app-loader>
-<div class="container" *ngIf="stepsCant && step != 7">
+
+
+<div class="container" *ngIf="stepsCant && step != 7 && step != 8">
     <h3 class="title">Activar plan: <span class="text-dark">{{plan?.name}} </span> </h3>
     <h6>Para activar plan "{{plan?.name}}" completa los siguientes pasos: </h6>
 
@@ -85,6 +87,22 @@
         <h3 class="title text-center ">Solicitud de activación de plan enviada.</h3>
         <br>
         <h6 class="text-center fadein" *ngIf="userplan">Pronto recibira un correo que le permitira comprobar si su petición fue aprobada o rechazada.</h6>
+        <br>
+        <div class="text-center">
+            <button routerLink="/" class="btn btn-primary"> <i class="fas fa-home"></i> Inicio</button>
+        </div>
+    </div>
+</div>
+
+<div class="container fadein" *ngIf="step == 8">
+    <br>
+    <br>
+    <div class="container fadeIn">
+        <h3 class="title text-center ">Ya posee un plan activo.</h3>
+        <br>
+        <h6 class="text-center fadein">Antes de poder activar un nuevo plan debera esperar que expire el plan activo.</h6>
+        <br>
+        <h5 class="text-center fadein">Puede invertir un nuevo monto en su plan activo desde el panel: "mi plan" o "saldo".</h5>
         <br>
         <div class="text-center">
             <button routerLink="/" class="btn btn-primary"> <i class="fas fa-home"></i> Inicio</button>

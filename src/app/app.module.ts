@@ -44,7 +44,13 @@ import { UserplanComponent } from './components/admin/userplan/userplan.componen
 import { CheckplanComponent } from './components/admin/userplan/checkplan/checkplan.component';
 import { MyPlanComponent } from './components/front/my-plan/my-plan.component';
 import { SaldoComponent } from './components/front/saldo/saldo.component';
+import { PanelComponent } from './components/front/panel/panel.component';
+import { PostProductComponent } from './components/front/panel/post-product/post-product.component';
+import { PostsComponent } from './components/front/panel/posts/posts.component';
+import { NgwWowModule } from 'ngx-wow';
 
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { DetailsComponent } from './components/front/post/details/details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +86,12 @@ import { SaldoComponent } from './components/front/saldo/saldo.component';
     UserplanComponent,
     CheckplanComponent,
     MyPlanComponent,
-    SaldoComponent
+    SaldoComponent,
+    PanelComponent,
+    PostProductComponent,
+    PostsComponent,
+    DetailsComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -92,7 +103,10 @@ import { SaldoComponent } from './components/front/saldo/saldo.component';
     HttpClientModule,
     DataTablesModule,
     NgxIntlTelInputModule,
-    LightboxModule
+    LightboxModule,
+    NgwWowModule,
+    HttpClientModule, 
+    NgxGalleryModule
   ],
   providers: [
     {

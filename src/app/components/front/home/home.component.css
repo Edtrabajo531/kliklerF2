@@ -1,0 +1,114 @@
+.slide {
+    margin-top: -50px !important;
+}
+
+.carousel-item .img-bg {
+    object-fit: cover;
+    height: 100%;
+    position: absolute;
+}
+
+.carousel-item {
+    border-bottom: 2px rgb(221, 221, 221) solid;
+    height: 500px;
+    overflow: hidden;
+}
+
+#dinero {
+    width: 35%;
+}
+
+#chica-rojo {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    /* height: 100%; */
+    z-index: 99999;
+}
+
+.container-text {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    width: 40%;
+}
+
+.title-slide {
+    color: rgb(59, 59, 59);
+    font-family: 'Osswald' !important;
+    text-transform: uppercase;
+    font-size: 45px;
+    text-shadow: 14px 14px 1px rgba(0, 0, 0, 0.096);
+    font-weight: 500;
+}
+
+.subtitle-slide {
+    font-family: 'Osswald' !important;
+    /* text-shadow: 14px 14px 1px rgba(0, 0, 0, 0.096); */
+}
+
+
+/* products */
+
+#maleta {
+    width: 50%;
+    position: absolute;
+    right: 10%;
+    bottom: 5%;
+}
+
+#balon {
+    width: 17%;
+    position: absolute;
+    right: 30%;
+    top: 5%;
+}
+
+#laptop {
+    width: 30%;
+    position: absolute;
+    bottom: 5%;
+}
+
+#chaqueta {
+    width: 40%;
+    position: absolute;
+    left: 0;
+}
+
+
+/* .carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='rgb(220, 53, 69)' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='rgb(220, 53, 69)' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+} */
+
+
+/* CATEGORIAS */
+
+.btn-cate {
+    font-size: 19px;
+    color: var(--red-l);
+    border: solid 2px var(--red-l);
+    text-align: center;
+    margin: auto;
+    padding: 5px 1px 5px 1px;
+    margin: 1px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-family: 'Osswald';
+    /* font-weight: 800 !important; */
+    /* margin-bottom: 7px; */
+    /* box-shadow: 3px 3px 2px rgba(128, 128, 128, 0.342); */
+}
+
+.btn-cate:hover {
+    cursor: pointer;
+    background: var(--red);
+    color: white;
+    box-shadow: none;
+    border-color: var(--red);
+}

@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit {
   formResendMail = false;
   accountConfirmed = false;
   errorAccountConfirmed = false;
+  countShowModal = 0;
   constructor(
     private modalS: NgbModal,
     config: NgbModalConfig,
@@ -47,24 +48,30 @@ export class NavbarComponent implements OnInit {
   //   }
 
   ngOnInit(): void {
-   
+  
     this.activatedR.queryParams.subscribe(data=>{
-      if(data['cuenta'] == "confirmada"){
-        let self = this;
-        self.accountConfirmed = true;
-         setTimeout( function(){
-          self.openLogin();
-          self.location.replaceState("/");
-         },500)
-      }else if(data['cuenta'] == "no-confirmada"){
-        this.errorAccountConfirmed = true;
-        let self = this;
-        setTimeout( function(){
-          self.openResendMail();
-          self.errorAccountConfirmed = true;
-          self.location.replaceState("/");
-         },500)
+      if(this.countShowModal == 0){
+        if(data['cuenta'] == "confirmada"){
+          let self = this;
+          self.accountConfirmed = true;
+          setTimeout( function(){
+            self.openLogin();
+            self.location.replaceState("/");
+           },500)
+           
+        }else if(data['cuenta'] == "no-confirmada"){
+          this.errorAccountConfirmed = true;
+          let self = this;
+          setTimeout( function(){
+            self.openResendMail();
+            self.errorAccountConfirmed = true;
+            self.location.replaceState("/");
+           },500)
+           
+        }
       }
+   
+      this.countShowModal = 1;
     })
     this.userAuth = this.authS.getAuth();
     this.loading = false;

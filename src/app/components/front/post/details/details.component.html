@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+
+<div class="container" *ngIf="post">
+    <h5>Calzado/Zapatos Nike</h5>
+    <div class="row">
+        <div class="col-xl-7">
+            <div class="card">
+                <div class="card-body">
+                    <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="title-dark">Descripción del producto</h5>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur numquam officia, debitis repellendus pariatur quis deserunt eius impedit nulla laudantium corporis eum obcaecati alias. Natus cumque a voluptatibus eaque facere?</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur numquam officia, debitis repellendus pariatur quis deserunt eius impedit nulla laudantium corporis eum obcaecati alias. Natus cumque a voluptatibus eaque facere?</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur numquam officia, debitis repellendus pariatur quis deserunt eius impedit nulla laudantium corporis eum obcaecati alias. Natus cumque a voluptatibus eaque facere?</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="text-danger">{{post.name}}</h4>
+
+                    <h2 class="float-"> $ {{post.price | number}} </h2>
+                    <br>
+
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary btn-block btn-lg"> <i class="fas fa-dollar"></i> COMPRAR</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="title-dark">Información del vendedor</h5>
+                    <p><i class="fas fa-user"></i> Edwar villavicencio</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

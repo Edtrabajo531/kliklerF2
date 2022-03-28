@@ -58,6 +58,7 @@ label:focus,
 .title-dark {
     font-family: 'Osswald' !important;
     text-transform: uppercase;
+    color: rgb(59, 59, 59);
 }
 
 h1,
@@ -66,7 +67,8 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Poppins' !important;
+    font-family: 'Osswald' !important;
+    /* color: rgb(59, 59, 59); */
 }
 
 .modal-title {
@@ -75,6 +77,7 @@ h6 {
     color: var(--red);
     text-shadow: 1px 1px rgb(131, 131, 131);
     text-transform: uppercase;
+    /* color: rgb(59, 59, 59); */
 }
 
 .link {
@@ -90,8 +93,9 @@ h6 {
 }
 
 p {
-    font-size: 15px;
-    font-family: 'Lato' !important;
+    font-size: 16px;
+    color: rgb(59, 59, 59);
+    font-family: 'Poppins' !important;
 }
 
 .font-500 {
@@ -170,7 +174,7 @@ label.text-danger {
 .btn {
     font-family: 'Poppins' !important;
     border-radius: 0px;
-    box-shadow: 2px 2px 2px rgba(128, 128, 128, 0.61);
+    box-shadow: 3px 3px 2px rgba(128, 128, 128, 0.342);
     margin-bottom: 5px;
     /* letter-spacing: 0.1em; */
     /* text-transform: uppercase; */
@@ -385,7 +389,7 @@ table th {
 }
 
 .container {
-    max-width: 900px !important
+    /* max-width: 900px !important */
 }
 
 .container-admin {
@@ -475,6 +479,64 @@ input[type='radio']:checked:after {
 }
 
 .link:hover {
+    color: var(--red-l);
+    cursor: pointer;
+}
+
+.bg-danger-l {
+    background: var(--red-l) !important;
+}
+
+.hover {
+    cursor: pointer;
+}
+
+
+/* CARD POST */
+
+.card-post {
+    border-color: rgb(197, 196, 196) !important;
+}
+
+.card-post .card-header {
+    position: relative;
+    padding: 5px;
+    height: 250px;
+    border-color: rgb(197, 196, 196) !important;
+    overflow: hidden;
+}
+
+.card-post:hover {
+    border-color: var(--red) !important;
+    cursor: pointer;
+}
+
+.card-post img {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    transition-duration: 1s;
+}
+
+.card-post:hover>.card-header img {
+    transform: scale(1.2);
+}
+
+.fa-heart {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 22px;
+    z-index: 30;
+    background: rgba(255, 255, 255, 0.452);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.fa-heart:hover {
     color: var(--red-l);
     cursor: pointer;
 }

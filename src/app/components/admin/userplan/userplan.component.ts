@@ -110,6 +110,7 @@ export class UserplanComponent implements OnInit {
           orderable: true,
           data: null,
           render: (data, type, full) => {
+           
             if(data.status == 'revision'){
               return "<span class='text-green'>Pendiente</span>";
             }else if(data.status == 'rechazado'){

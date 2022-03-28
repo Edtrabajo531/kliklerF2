@@ -83,6 +83,7 @@ export class ModalRegisterComponent implements OnInit {
     this.authS.register(this.form.value).subscribe(
       (response: any) => {
         console.log(response);
+        console.log(response); console.log(response); console.log(response);
         this.sendToFather("hideLoader")
         let detect_errors_server = this.validatorsS.detect_errors_server(response,this.form);
         if(detect_errors_server){

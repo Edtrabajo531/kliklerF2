@@ -1,7 +1,8 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { UserplanService } from '../../../../services/front/userplan.service';
-import { User } from '../../../../../../../bitcoinF/src/app/models/user.model';
+
 import { Lightbox } from 'ngx-lightbox';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-checkplan',

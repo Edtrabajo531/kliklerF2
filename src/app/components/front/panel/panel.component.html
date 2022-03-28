@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<div class="container-sideBar">
+    <div class="card side_bar bg-danger m-auto">
+        <div class="card-header bg-danger">
+            <h5 class="m-0 title-dark text-white text-center">Panel de control</h5>
+        </div>
+        <div class="card-body p-1">
+
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item bg-danger">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button routerLink="/panel/saldo" routerLinkActive="active" class="accordion-button no-arrow bg-danger" type="button">
+                      Saldo
+                    </button>
+                    </h2>
+                </div>
+
+                <div class="accordion-item bg-danger">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button  bg-danger" [ngClass]="{'collapsed':!menuPlan}" type="button" data-bs-toggle="collapse" data-bs-target="#p2" aria-expanded="false" aria-controls="p3">
+                            Planes
+                    </button>
+                    </h2>
+                    <div id="p2" class="accordion-collapse collapse" [ngClass]="{'show':menuPlan}" aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body p-0">
+                            <button routerLink="/panel/mi-plan" routerLinkActive="active" class="accordion-button no-arrow bg-danger accordion-button-child" type="button">
+                                Mi plan
+                              </button>
+                            <button routerLink="/panel/planes" routerLinkActive="active" class="accordion-button no-arrow bg-danger accordion-button-child" type="button">
+                                Planes
+                              </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-danger">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button  bg-danger" [ngClass]="{'collapsed':!menuProducts}" type="button" data-bs-toggle="collapse" data-bs-target="#p3" aria-expanded="false" aria-controls="p3">
+                      Productos
+                    </button>
+                    </h2>
+
+
+                    <div id="p3" class="accordion-collapse collapse" [ngClass]="{'show':menuProducts}" aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body p-0">
+                            <button routerLink="/panel/mis-publicaciones" routerLinkActive="active" class="accordion-button no-arrow bg-danger accordion-button-child" type="button">
+                                Mis publicaciones
+                              </button>
+                            <button routerLink="/panel/publicar-producto" routerLinkActive="active" class="accordion-button no-arrow bg-danger accordion-button-child" type="button">
+                                Publicar un producto
+                              </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
