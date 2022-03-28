@@ -1,12 +1,16 @@
 <app-navbar></app-navbar>
 
 <div class="container" *ngIf="post">
-    <h5>Calzado/Zapatos Nike</h5>
+
+    <!-- categoria producto -->
+    <h5 *ngIf="">Calzado/Zapatos Nike</h5>
+
     <div class="row">
-        <div class="col-xl-7">
+        <div class="col-md-7">
             <div class="card">
                 <div class="card-body">
-                    <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+                    <ngx-gallery style="margin-bottom: -20px;" [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+
                 </div>
             </div>
             <div class="card">
@@ -18,14 +22,19 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-5">
+        <div class="col-md-5">
             <div class="card">
                 <div class="card-body">
                     <h4 class="text-danger">{{post.name}}</h4>
+                    <i class="fas fa-heart add-favorite float-end mt-1"></i>
 
                     <h2 class="float-"> $ {{post.price | number}} </h2>
-                    <br>
 
+                    <div>
+
+
+
+                    </div>
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-block btn-lg"> <i class="fas fa-dollar"></i> COMPRAR</button>

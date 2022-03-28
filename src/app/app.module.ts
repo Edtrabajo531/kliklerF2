@@ -48,9 +48,13 @@ import { PanelComponent } from './components/front/panel/panel.component';
 import { PostProductComponent } from './components/front/panel/post-product/post-product.component';
 import { PostsComponent } from './components/front/panel/posts/posts.component';
 import { NgwWowModule } from 'ngx-wow';
-
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { DetailsComponent } from './components/front/post/details/details.component';
+import { SliderCategoriesComponent } from './components/front/home/slider-categories/slider-categories.component';
+import { RouterModule } from '@angular/router';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { SliderProductsRecentComponent } from './components/front/home/slider-products-recent/slider-products-recent.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,6 +95,8 @@ import { DetailsComponent } from './components/front/post/details/details.compon
     PostProductComponent,
     PostsComponent,
     DetailsComponent,
+    SliderCategoriesComponent,
+    SliderProductsRecentComponent,
     
   ],
   imports: [
@@ -106,7 +112,11 @@ import { DetailsComponent } from './components/front/post/details/details.compon
     LightboxModule,
     NgwWowModule,
     HttpClientModule, 
-    NgxGalleryModule
+    NgxGalleryModule,
+    RouterModule,
+    BrowserAnimationsModule,
+    CarouselModule
+  
   ],
   providers: [
     {

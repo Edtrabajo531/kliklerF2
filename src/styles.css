@@ -5,7 +5,7 @@
     --red: #ff2424;
     --red-shadow: #b60606; */
     --red-l: rgb(231, 80, 95);
-    --red: rgb(220, 53, 69);
+    --red: #B90000;
     --red-shadow: rgb(220, 53, 69);
 }
 
@@ -52,7 +52,11 @@ label:focus,
     font-weight: 500;
     letter-spacing: 0.05em;
     color: var(--red);
-    text-shadow: 1px 1px rgb(70, 70, 70);
+    /* text-shadow: 1px 1px rgb(70, 70, 70); */
+}
+
+.text-danger {
+    color: var(--red) !important;
 }
 
 .title-dark {
@@ -388,10 +392,6 @@ table th {
     bottom: 50px !important;
 }
 
-.container {
-    /* max-width: 900px !important */
-}
-
 .container-admin {
     padding-left: 1%;
     padding-right: 1%;
@@ -496,12 +496,23 @@ input[type='radio']:checked:after {
 
 .card-post {
     border-color: rgb(197, 196, 196) !important;
+    margin: auto;
+}
+
+.card-post .card-body {
+    min-height: 90px !important;
+    padding: 10px !important;
+}
+
+.card-post .title-post {
+    line-height: 1.2;
+    margin-bottom: 0 !important;
 }
 
 .card-post .card-header {
     position: relative;
     padding: 5px;
-    height: 250px;
+    height: 230px;
     border-color: rgb(197, 196, 196) !important;
     overflow: hidden;
 }
@@ -525,7 +536,20 @@ input[type='radio']:checked:after {
     transform: scale(1.2);
 }
 
-.fa-heart {
+.add-favorite {
+    background: rgb(235, 235, 235) !important;
+    padding: 7px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: rgb(104, 104, 104);
+}
+
+.add-favorite:hover {
+    color: rgb(56, 56, 56);
+    cursor: pointer;
+}
+
+.card-post .fa-heart {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -536,7 +560,77 @@ input[type='radio']:checked:after {
     border-radius: 10px;
 }
 
-.fa-heart:hover {
+.card-post .fa-heart:hover {
     color: var(--red-l);
     cursor: pointer;
+}
+
+body {
+    background: rgb(247, 247, 247);
+}
+
+
+/* ngx carousel */
+
+.owl-theme .owl-nav [class*=owl-] {
+    color: #ffffff;
+    background: rgba(255, 0, 0, 0.233);
+    border-radius: 3px;
+    border-radius: 100%;
+}
+
+.owl-theme .owl-nav [class*=owl-]:hover {
+    background: rgba(255, 0, 0, 0.555);
+}
+
+
+/* slider categories */
+
+.slider-categories .owl-prev,
+.slider-categories .owl-next {
+    position: absolute;
+    top: 80%;
+    transform: translateY(-50%);
+}
+
+.slider-categories .owl-prev {
+    left: 0;
+}
+
+.slider-categories .owl-next {
+    right: 0;
+}
+
+
+/* slider producs */
+
+.slider-products .owl-prev,
+.slider-products .owl-next {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.slider-products .owl-prev {
+    left: 2%;
+}
+
+.slider-products .owl-next {
+    right: 2%;
+}
+
+
+/* ngx carousel end */
+
+@media(max-width:767px) {
+    .hide-md {
+        display: none;
+    }
+}
+
+@media(max-width:350px) {
+    .container {
+        padding-left: 2px !important;
+        padding-right: 2px !important;
+    }
 }

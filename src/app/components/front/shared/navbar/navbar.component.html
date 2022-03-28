@@ -1,21 +1,31 @@
-<div class="navbar-p mb-5">
+<div class="navbar-p mb-4">
     <div class="container">
         <div class="section-1">
             <div class="content-center">
-                <img class="logo hover" routerLink="/" src="assets\logotipos\klikler-text-logo.png" alt="" />
+                <img class="logo hover" routerLink="/" src="assets\images\default\logo-klikler.png" alt="" />
             </div>
         </div>
         <div class="section-2">
             <div class="content-center"></div>
         </div>
         <div class="section-3">
-            <div class="content-center" *ngIf="userAuth?.id">
-                <a routerLink="/panel/saldo" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-dollar"></i> Saldo
-                </a>
+            <div class="content-right" *ngIf="userAuth?.id">
                 <div class="dropdown">
                     <a class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> {{ userAuth.alias }}
+                        <i class="fas fa-user"></i> <span class="hide-md"> Notificaciones</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
+                        <div style="min-height:50px">
+
+                        </div>
+
+
+                    </ul>
+                </div>
+
+                <div class="dropdown">
+                    <a class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i> <span class="hide-md"> {{ userAuth.alias }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
                         <div *ngIf="userAuth.role == 'cliente'">
@@ -33,7 +43,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="content-center" *ngIf="!userAuth?.id">
+            <div class="content-right" *ngIf="!userAuth?.id">
                 <a (click)="openLogin()"> <i class="fas fa-sign-in"></i> Inicio</a>
                 <a (click)="openRegister()">
                     <i class="fas fa-user-plus"></i> Registro</a>

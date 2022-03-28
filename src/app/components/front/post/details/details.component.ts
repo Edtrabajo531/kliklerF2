@@ -101,35 +101,57 @@ export class DetailsComponent implements OnInit {
         width: '100%',
         height: '600px',
         imageSize: "contain",
-        thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide,
         imageInfinityMove:true,
         previewInfinityMove:true,
-       
+        thumbnailsColumns: 5,
+        thumbnailsPercent: 20,
+        thumbnailsMargin: 5,
+        thumbnailMargin: 5,
       },
       // max-width 800
       {
-        breakpoint: 800,
-        width: '100%',
-        height: '600px',
-        imagePercent: 80,
+        breakpoint: 1200,
+        
+        height: '500px',
+      },
+      {
+        breakpoint: 991,
+        thumbnailsColumns: 4,
+        thumbnailsPercent: 16,
+
+        height: '500px',
+      },
+      {
+        breakpoint: 767,
+        thumbnailsColumns: 5,
         thumbnailsPercent: 20,
-        thumbnailsMargin: 20,
-        thumbnailMargin: 20
+
+        height: '500px',
       },
       // max-width 400
       {
+        breakpoint: 500,
+        height: '400px',
+        thumbnailsColumns: 5,
+        thumbnailsPercent: 16,
+        preview: false
+      },
+      {
         breakpoint: 400,
+        height: '350px',
+        thumbnailsColumns: 4,
+        thumbnailsPercent: 18,
+        preview: false
+      },
+
+      {
+        breakpoint: 350,
+        height: '300px',
+        thumbnailsPercent: 16,
         preview: false
       }
     ];
-    
-
- 
-    
-    
-   
-    
 
   }
   
