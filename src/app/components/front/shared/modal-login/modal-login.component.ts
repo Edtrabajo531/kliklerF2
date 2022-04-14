@@ -34,7 +34,6 @@ export class ModalLoginComponent implements OnInit {
   }
   
   sendToFather(message:any){
-    
     this.sendToF.emit(message);
   }
 
@@ -68,8 +67,6 @@ export class ModalLoginComponent implements OnInit {
         if(response.result == 'correo no verificado'){
           this.sendToFather("hideModal");
           this.sendToFather("modalResendEmail");
-
-          
           return;
         }
         let detect_errors_server = this.validatorsS.detect_errors_server(response,this.form);
