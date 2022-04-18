@@ -7,10 +7,11 @@
             <div class="card-body">
                 <div class=" form-group" style="max-width: 200px;">
                     <label for=" ">Inversión $</label>
-                    <input placeholder="Mínimo {{userplan?.cost.toString().replace('.',',')}} $" type="text" formControlName="inversion" class="form-control">
+
+                    <input placeholder="Mínimo {{userplan?.cost}} $" type="text" formControlName="inversion" class="form-control">
                     <label *ngIf="validate( 'inversion').valid " class="text-danger "> {{validate('inversion').error}} </label>
                     <label class="text-danger" *ngIf="form.hasError('minFloat')">
-                    El valor mínimo para este campo debe ser: {{userplan.cost.toString().replace('.',',')}}
+                    El valor mínimo para este campo debe ser: {{userplan.cost}}
                 </label>
                 </div>
 

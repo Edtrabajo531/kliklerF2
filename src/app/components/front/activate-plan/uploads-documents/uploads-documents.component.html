@@ -1,17 +1,12 @@
 <div class="animate fadeIn">
-
-    <div class="card" *ngIf="loading == false">
+    <!-- {{userplan | json}} -->
+    <div class="card" *ngIf="loading == false && userplan.license != 0">
         <div class="card-body">
             <h6 class="text-danger">
-                Pago en dolares:
-                <span class="font-600">25% =
-          {{ userplan?.pay_in_dollars?.toString().replace(".", ",") }} $ </span
-        >
-      </h6>
-      <h6 *ngIf="userplan.license != 0" class="text-danger"> Licencia: <span class="font-600">
-        {{license?.toString().replace(".", ",")}} $ </span
-      >   </h6>
-      <h6 *ngIf="userplan.license != 0" class="text-danger"> Total dolares: <span class="font-600">{{ userplan?.total_pay_dollars?.toString().replace(".", ",") }}  $ </span> </h6>
+                Pago en dolares USD:
+                <span class="font-600">
+                {{ userplan?.license | number  :'.2-2' }} $ </span> (Licencia Primera vez)</h6>
+
             <div class="row">
                 <div class="form-group col-md-4 fadeIn">
                     <label for="">Nombre del banco</label>
@@ -36,11 +31,12 @@
             </div>
         </div>
     </div>
+
     <div class="card">
         <div class="card-body">
             <h6 class="text-danger">
-                Pago en Btc:
-                <span class="font-600">75% = {{ userplan?.pay_in_btc?.toString().replace(".", ",") }}$
+                Pago en Criptomoneda:
+                <span class="font-600"> {{ userplan?.inversion | number  :'.2-2' }} $
           USD</span
         >
       </h6>

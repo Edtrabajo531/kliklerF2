@@ -66,7 +66,7 @@ export class InsertAmountComponent implements OnInit {
       {
         id:[this.userplan?.id],
         minimun:[this.userplan?.cost],
-        inversion: [this.userplan?.inversion?.toString().replace('.',','), [Validators.required,Validators.max(999999999999) ,this.validatorsS.float ]],
+        inversion: [this.userplan?.inversion, [Validators.required,Validators.max(999999999999) ,this.validatorsS.float ]],
       },{ validator: this.validatorsS.minFloat });
     this.sendToFather('hideLoader');
   }

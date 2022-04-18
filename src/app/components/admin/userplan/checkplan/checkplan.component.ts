@@ -71,9 +71,6 @@ export class CheckplanComponent implements OnInit {
 
   rejectPlan(id: any) {
     this.sendToFather('showLoader');
-    
-   
-    
     this.userplanS.rejectPlan(id,this.reject_message.nativeElement.value).subscribe((data: any) => {
       this.sendToFather('newData');
     });

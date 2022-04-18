@@ -13,23 +13,23 @@
                 </div>
                 <div class="col-4">
                     <label for="">Inversion:</label>
-                    <p>{{userplan.inversion}} $</p>
+                    <p>{{userplan.inversion | number: '.2-2'}} $</p>
                 </div>
                 <div class="col-4">
                     <label for="">Ganancias al mes %:</label>
-                    <p>{{userplan.profit}} %</p>
+                    <p>{{userplan.profit | number: '.2-2'}} %</p>
                 </div>
                 <div class="col-4">
                     <label for="">Ganancias al mes $:</label>
-                    <p>{{userplan.minimum_charge}} $</p>
+                    <p>{{userplan.minimum_charge | number: '.2-2'}} $</p>
                 </div>
                 <div class="col-4">
                     <label for="">Mínimo de retiro:</label>
-                    <p>{{userplan.minimum_charge}} $</p>
+                    <p>{{userplan.minimum_charge | number: '.2-2'}} $</p>
                 </div>
                 <div class="col-4">
                     <label for="">Duración:</label>
-                    <p>{{userplan.duration}} <span *ngIf="userplan.duration == 1">mes</span> <span *ngIf="userplan.duration > 1">meses</span></p>
+                    <p>{{userplan.duration | number: '.2-2'}} <span *ngIf="userplan.duration == 1">mes</span> <span *ngIf="userplan.duration > 1">meses</span></p>
                 </div>
                 <div class="col-4">
                     <label for="">Publicación productos:</label>
@@ -37,35 +37,33 @@
                 </div>
                 <div class="col-4">
                     <label for="">Total ganancias:</label>
-                    <p>{{userplan.total_profit}} $</p>
+                    <p>{{userplan.total_profit | number: '.2-2'}} $</p>
                 </div>
 
 
             </div>
             <h6 class="text-danger">Detalles del pago</h6>
             <div class="row">
-                <div class="col-4">
+                <!-- <div class="col-4">
                     <label for="">Pago en $ USD</label>
                     <p class="text- m-0">
                         25 % = {{ userplan.pay_in_dollars }} $
                     </p>
-                </div>
+                </div> -->
                 <div class="col-4">
-                    <label for="">Pago en bitcoins $ USD </label>
-                    <p class="text- m-0">
-                        75 % = {{ userplan.pay_in_btc }} $
-                    </p>
+                    <label for="">Pago en Criptomonedas</label>
+                    <p>{{userplan.inversion | number: '.2-2'}} $</p>
                 </div>
                 <div class="col-4" *ngIf="userplan.license != 0">
-                    <label for="">Licencia (Primera vez) </label>
+                    <label for="">Pago en $ USD </label>
                     <p class="text- m-0">
-                        {{ userplan.license }} $
+                        {{ userplan.license | number: '.2-2'}} $ <small for="">(Licencia 1 vez)</small>
                     </p>
                 </div>
                 <div class="col-4" *ngIf="userplan.license != 0">
                     <label for="">Total a pagar </label>
                     <p class="text- m-0">
-                        {{ userplan.total_pay }} $
+                        {{ userplan.total_pay | number: '.2-2'}} $
                     </p>
                 </div>
             </div>

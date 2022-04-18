@@ -135,7 +135,7 @@ export class AddDataContactComponent implements OnInit {
       this.sendToFather('hideLoader');
       return;
     }
-
+    
     this.authS.updateDataContact(this.form.value).subscribe(
       (response: any) => {
         this.loading = false

@@ -11,8 +11,9 @@ export class ValidatorsService {
   float(control: FormControl) {
     if (control?.value) {
       let value = control.value;
-      var regExp = /^[0-9]+(\,[0-9]{1,20})?$/;
-      if (value.match(regExp)) {
+      // var regExp = /^[0-9]+(\,[0-9]{1,20})?$/;
+      var regExp = /^[0-9]+(\.[0-9]{1,20})?$/;
+      if (value?.toString().match(regExp)) {
         return true;
       } else {
         return { float: true };

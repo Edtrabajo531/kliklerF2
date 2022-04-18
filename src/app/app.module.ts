@@ -54,6 +54,10 @@ import { SliderCategoriesComponent } from './components/front/home/slider-catego
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SliderProductsRecentComponent } from './components/front/home/slider-products-recent/slider-products-recent.component';
+import { CoinsComponent } from './components/admin/coins/coins.component';
+// import { CoinsComponent } from './components/admin/coins/coins.component';
+// import { ModalCreateCoinComponent } from './components/admin/coins/modal-create-coin/modal-create-coin.component';
+// import { ModalEditCoinComponent } from './components/admin/coins/modal-edit-coin/modal-edit-coin.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +101,7 @@ import { SliderProductsRecentComponent } from './components/front/home/slider-pr
     DetailsComponent,
     SliderCategoriesComponent,
     SliderProductsRecentComponent,
-    
+    CoinsComponent,
   ],
   imports: [
     BrowserModule,

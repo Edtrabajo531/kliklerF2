@@ -7,7 +7,7 @@ export class Balance {
   minimum_charge:string;
   porcentage_month:string;
   profit_month:string;
-
+  points:string;
 
 }
   

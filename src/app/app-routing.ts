@@ -15,6 +15,7 @@ import { PanelComponent } from './components/front/panel/panel.component';
 import { PostsComponent } from './components/front/panel/posts/posts.component';
 import { PostProductComponent } from './components/front/panel/post-product/post-product.component';
 import { DetailsComponent } from './components/front/post/details/details.component';
+import { CoinsComponent } from './components/admin/coins/coins.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,7 @@ const routes: Routes = [
       { path: 'planes-usuarios', component: UserplanComponent },
       { path: 'cuentas-bancarias', component: BankAccountsComponent },
       { path: 'carteras-bitcoins', component: WalletsComponent },
+      { path: 'monedas', component: CoinsComponent },
     ],
   },
   { path: 'admin', pathMatch: 'full', redirectTo: 'administrar/planes' },

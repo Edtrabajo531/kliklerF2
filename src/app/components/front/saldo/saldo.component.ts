@@ -17,9 +17,12 @@ export class SaldoComponent implements OnInit {
 
   ngOnInit(): void {
     this.authS.getAuthServer().subscribe((data:any)=>{
+     
+      
       this.balance = data.user;
       this.balance.porcentage_month = data.porcentage_month;
       this.balance.profit_month = data.profit_month;
+      
       this.loading = false;
 
     })

@@ -69,11 +69,12 @@ export class AddDataUserComponent implements OnInit {
   }
 
   submit() {
+   
     this.sendToFather('showLoader');
     this.validatorsS.remove_errors_server(this.form);
     this.form.markAllAsTouched();
     if (this.form.status == 'INVALID') {
-      this.loading = false;
+      this.sendToFather('hideLoader');
       return;
     }
   
